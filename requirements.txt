@@ -112,3 +112,6 @@ joblib==1.1.0
 htmldate==1.2.1
 openpyxl==3.0.10
 newspaper3k==0.2.8
+pyOpenSSL
+tld
+whois

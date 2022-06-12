@@ -1,4 +1,3 @@
-import core
 from app.db.crud import *
 from app.db.models import AnalysisResult
 from app.helpers import default_logger
@@ -15,7 +14,6 @@ def analyze_document(document: Document, logger=default_logger) -> None:
 
     # TODO: Пока просто для примера. Вместо этого подставить реальный анализ
     from time import sleep
-    core.start_analyze(document.ar_id)
     sleep(5)
     update_entry_by_id(document.ar_id, AnalysisResult(is_organisation_real=True))
     sleep(5)

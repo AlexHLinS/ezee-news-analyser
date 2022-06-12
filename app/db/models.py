@@ -10,7 +10,15 @@ class Source(Base):
 
     id = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     url = Column(String, unique=True, nullable=False)
-    score = Column(Float)  # рейтинг достоверности первоисточника
+    score = Column(Float)
+    traffic = Column(Float)
+    blacklisted = Column(Boolean)
+    org = Column(String)
+    government = Column(Boolean)
+    created_at = Column(DATETIME)
+    cert_expires_at = Column(DATETIME)
+    ipv4 = Column(String)
+    ipv6 = Column(String)
     date_added = Column(DATETIME, default=datetime.now)
     date_updated = Column(DATETIME, default=datetime.now)
 
@@ -55,3 +63,14 @@ class AnalysisResult(Base):
     is_directional_pronouns_used = Column(Boolean)
     is_direct_appear = Column(Boolean)
     is_any_links = Column(Boolean)
+
+
+class BlacklistedSource(Base):
+    __tablename__ = "blacklisted_sources"
+
+    id = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
+    ipv4 = Column(String)
+    ipv6 = Column(String)
+    url = Column(String, unique=True, nullable=False)
+    date_added = Column(DATETIME, default=datetime.now)
+    date_updated = Column(DATETIME, default=datetime.now)

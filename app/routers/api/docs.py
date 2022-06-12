@@ -31,7 +31,7 @@ async def get_document(doc_id: int, db: Session = Depends(get_db)) -> Document:
 
 
 @router.post("/", name='Отправить документ на анализ', response_model=PyDocument)
-async def add_document(new_doc: PyNewDocument,
+async def add_document(new_doc: NewPyDocument,
                        background_tasks: BackgroundTasks,
                        db: Session = Depends(get_db)) -> Document:
     """
@@ -79,7 +79,8 @@ async def analyze_sources(doc_id: int, db: Session = Depends(get_db)) -> PySourc
     """
     Проводит анализ источников, которые публиковали документ и ему подобные
     """
-    logger = CustomLoggerAdapter(ROOT_LOGGER, extra={'req_uuid': uuid4(), 'method': 'GET api/docs/analyze-sources'})
+    logger = CustomLoggerAdapter(ROOT_LOGGER, extra={'req_uuid': uuid4(),
+                                                     'method': f'GET api/docs/{doc_id}/analyze-sources'})
 
     document = get_entry_by_id(doc_id, Document, db)
 

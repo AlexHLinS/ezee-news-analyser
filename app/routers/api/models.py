@@ -1,11 +1,12 @@
 from typing import List, Union
 from datetime import datetime
 from urllib.parse import urlparse
+from ipaddress import IPv4Address, IPv6Address
 
 from pydantic import BaseModel, AnyUrl, validator
 
 
-class PyNewDocument(BaseModel):
+class NewPyDocument(BaseModel):
     url: Union[AnyUrl, None]
     title: Union[str, None]
     text: Union[str, None]
@@ -33,9 +34,11 @@ class PyDocument(BaseModel):
         orm_mode = True
 
 
-class PyNewSource(BaseModel):
+class NewPySource(BaseModel):
     url: AnyUrl
     score: Union[float, None]
+    ipv4: Union[IPv4Address, None]
+    ipv6: Union[IPv6Address, None]
 
     @validator("url")
     def is_absolute(cls, v):
@@ -46,16 +49,30 @@ class PyNewSource(BaseModel):
 
 class PySource(BaseModel):
     id: int
-    url: Union[str, None]
+    url: str
     score: Union[float, None]
+    traffic: Union[float, None]
+    blacklisted: Union[bool, None]
+    org: Union[str, None]
+    government: Union[bool, None]
+    created_at: datetime
+    cert_expires_at: Union[datetime, None]
+    ipv4: Union[IPv4Address, None]
+    ipv6: Union[IPv6Address, None]
     date_added: datetime
     date_updated: datetime
+
+    class Config:
+        orm_mode = True
 
 
 class PySourcesAnalysisResult(BaseModel):
     sources: List[PySource]
     good_media_percentage: Union[float, None]
     media_avg_score: Union[float, None]
+
+    class Config:
+        orm_mode = True
 
 
 class PyAnalysisResult(BaseModel):
@@ -81,6 +98,33 @@ class PyAnalysisResult(BaseModel):
     is_directional_pronouns_used: Union[bool, None]
     is_direct_appear: Union[bool, None]
     is_any_links: Union[bool, None]
+
+    class Config:
+        orm_mode = True
+
+
+class NewPyBlacklistedSource(BaseModel):
+    ipv4: IPv4Address
+    ipv6: IPv6Address
+    url: AnyUrl
+
+    @validator("ipv4", "ipv6", "url", always=True)
+    def any_of(cls, v, values):
+        if len(values) == 3 and not any([value for _, value in values.items()]):
+            raise ValueError("at least one of 'ipv4', 'ipv6', 'url' must be provided")
+        return v
+
+
+class PyBlacklistedSource(BaseModel):
+    ipv4: IPv4Address
+    ipv6: IPv6Address
+    url: AnyUrl
+
+    @validator("ipv4", "ipv6", "url", always=True)
+    def any_of(cls, v, values):
+        if len(values) == 3 and not any([value for _, value in values.items()]):
+            raise ValueError("at least one of 'ipv4', 'ipv6', 'url' must be provided")
+        return v
 
     class Config:
         orm_mode = True

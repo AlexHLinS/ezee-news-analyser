@@ -4,8 +4,8 @@ from . import SessionLocal
 from .models import *
 
 
-ModelInstances = Union[Source, Document, AnalysisResult]
-ModelTypes = Union[Type[Source], Type[Document], Type[AnalysisResult]]
+ModelInstances = Union[Source, Document, AnalysisResult, BlacklistedSource]
+ModelTypes = Union[Type[Source], Type[Document], Type[AnalysisResult], Type[BlacklistedSource]]
 
 
 def get_db() -> SessionLocal:

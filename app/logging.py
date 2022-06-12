@@ -1,3 +1,5 @@
+from fastapi.logger import logger as fastapi_logger
+
 import logging
 import sys
 
@@ -52,8 +54,19 @@ class CustomLoggerAdapter(logging.LoggerAdapter):
         return final_string, {}
 
 
-def get_root_logger(log_format, log_level, log_path):
-    logger = logging.getLogger('backend')
+def get_root_logger(log_format: str, log_level: str, log_path: str) -> logging.Logger:
+    """
+    Создает логгер приложения
+
+    Args:
+        log_format: Формат сообщения
+        log_level: Уровень логгирования
+        log_path: Путь к файлу для записи логов
+
+    Returns:
+
+    """
+    logger = logging.getLogger("fastapi")
     formatter = logging.Formatter(log_format)
     logger.setLevel(log_level)
 
