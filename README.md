@@ -66,5 +66,6 @@ pip install -U scikit-learn
 pip install nltk
 pip install translate
 pip install openpyxl
+pip install wiki-ru-wordnet
 ```      
 

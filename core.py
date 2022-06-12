@@ -1,17 +1,20 @@
-from typing import Tuple, Mapping
+from collections import Counter
+from typing import Tuple, Mapping, List
 
+from razdel import sentenize
 from scipy.spatial.distance import cosine
 
-from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid, TextFeatures, ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
+from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid, TextFeatures, \
+    ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
     UniqTestResults, SimilarArticleData, ArticleBaseData
 from data_science.clickbait_predictor import Clickbait_predictor
+from data_science.fact_extractor import Fact_extractor
 from data_science.ner_extractor import NER_extractor
 from data_science.rationality_intuition_scorer import Rationality_intuition_scorer
 from data_science.sentiment_extractor import Sentiment_extractor
 import json
 
 from app.db.crud import get_entry_by_id, update_entry_by_id, Document
-
 
 # TODO: описать и реализовать класс AnalyzedArticle
 #  Класс доджен содержать всю информацию и методы
@@ -132,8 +135,9 @@ from app.db.crud import get_entry_by_id, update_entry_by_id, Document
         asyncio.run(self.start_data_gethering())
 '''
 
+
 ######
-def start_analyze(article_id:int) -> None:
+def start_analyze(article_id: int) -> None:
     """
     :param article_id: индитификатор анализируемой новости в базе данных
     :return: None
@@ -164,8 +168,8 @@ def text_source_sentiment_score(text, title, id, text_source, title_source, id_s
     :param title_source: Заголовок новости источника
     :return: sentiment distance - чем ближе к 0 - тем ближе тексты, чем ближе к 1 - тем дальше
     """
-    _, text_scores = get_fake_score(text, title, id)
-    _, source_scores = get_fake_score(text_source, title_source, id_source)
+    _, text_scores = get_sentiment_scores(text, title, id)
+    _, source_scores = get_sentiment_scores(text_source, title_source, id_source)
 
     column_names = ["negative", "positive", "neutral", "skip", "speech", 'clickbait_score', 'rationality', 'intuition']
     text_vector = [text_scores[column] for column in column_names]
@@ -175,14 +179,15 @@ def text_source_sentiment_score(text, title, id, text_source, title_source, id_s
 
     return distance
 
-def get_fake_score(text, title) -> Tuple[str, Mapping[str, float]]:
+
+def get_sentiment_scores(text, title) -> Tuple[str, Mapping[str, float]]:
     """
     :param text: Текст статьи(новости)
     :param title: Заголовок новости
     :return: Текст статьи(новости) str и результаты анализа текста в виде: Dict ["positive": float, "negative": float, "neutral": float, "skip": float,
         "speech": float, "clickbait_score":float]
     """
-    ner_extractor_obj = NER_extractor()
+
     sentiment_extractor_obj = Sentiment_extractor()
     clickbait_predictor_obj = Clickbait_predictor()
     rationality_intuition_scorer_obj = Rationality_intuition_scorer()
@@ -206,7 +211,7 @@ def get_fake_score_from_url(url, id) -> Tuple[str, Mapping[str, float]]:
     """
     article_text = get_text_from_url(url)[5]
     article_title = get_text_from_url(url)[0]
-    return get_fake_score(article_text, article_title)
+    return get_sentiment_scores(article_text, article_title)
 
 
 def get_article_text_and_title(url) -> ArticleBaseData:
@@ -223,3 +228,108 @@ def check_is_primary_source(url_list) -> Tuple[str, bool]:
     :return: список пар адрес = признак первоисточника (True - первоисточник, False - нет)
     """
     return ["", False]
+
+def text_source_facts_comparison(text, title, id, text_source, title_source, id_source) -> Tuple[List[str], List[str]]:
+    """
+    :param id: индитификатор новости из базы
+    :param text: Текст статьи(новости)
+    :param title: Заголовок новости
+    :param id_source: индитификатор новости источника из базы
+    :param text_source: Текст статьи(новости) источника
+    :param title_source: Заголовок новости источника
+    :return: list of error messaqes для фактов-числительных and list of errors messages для фактов-объектов
+    """
+    text_numerical_facts, text_ner_facts = get_facts_from_text(text)
+    source_numerical_facts, source_ner_facts = get_facts_from_text(text_source)
+    numerical_error_messages = compare_numerical_facts(
+        source_numerical_facts,
+        text_numerical_facts)
+
+    ner_error_messages = compare_ner_facts(source_ner_facts, text_ner_facts)
+    return numerical_error_messages, ner_error_messages
+
+
+def compare_numerical_facts(source_numerical_facts, text_numerical_facts):
+    error_messages = []
+    for key in text_numerical_facts.keys():
+        if key == "" or key == "год":
+            continue
+        if key in source_numerical_facts.keys():
+            text_num_fact = text_numerical_facts[key]
+            source_num_fact = source_numerical_facts[key]
+            text_nums = [num_obj['number'] for num_obj in text_num_fact]
+            source_nums = [num_obj['number'] for num_obj in source_num_fact]
+            different_numbers = list(set(text_nums) - set(source_nums))
+            if len(different_numbers) > 0:
+                message = "\nФакты требуют подтверждения: \n"
+                source_message = "Факты в источнике: \n"
+                source_fact_texts = "\n\n".join(
+                    [f"Факт: {fact['number']} {key}\n Текст: {fact['sentence']}" for fact in source_num_fact])
+                text_message = f"\n\n\nФакты в тексте: \n"
+                diff_facts = [find_first_number_obj_with_given_num(text_num_fact, number) for number in
+                              different_numbers]
+                text_fact_texts = "\n\n".join(
+                    [f"Факт: {fact['number']} {key}\n Текст: {fact['sentence']}" for fact in diff_facts])
+                error_messages.append(f"{message}{source_message}{source_fact_texts}{text_message}{text_fact_texts}")
+    return error_messages
+
+
+def compare_ner_facts(source_ner_facts, text_ner_facts):
+    ner_types = {"PER": "ЛИЧНОСТЬ",
+                 "LOC": "ЛОКАЦИЯ",
+                 "ORG": "ОРГАНИЗАЦИЯ"}
+    error_messages = []
+
+    for key in source_ner_facts.keys():
+        source_ner_fact = source_ner_facts[key]
+        if len(source_ner_fact) > 2:
+            values = [fact["Normal spans"] for fact in source_ner_fact]
+            counter = Counter(values)
+            most_important_value = counter.most_common(1)[0][0]
+            values_text = [fact["Normal spans"] for fact in text_ner_facts[key]]
+            if most_important_value not in values_text:
+                message = "\nВажная сущность исходного текста пропущена: \n"
+                source_message = f"Сущность в источнике: {most_important_value}, тип: {ner_types[key]}\n"
+                source_fact_texts = "\n\n".join(
+                    [f"Текст: {fact['sentence']}" for fact in source_ner_fact])
+                error_messages.append(f"{message}{source_message}{source_fact_texts}")
+
+    for key in text_ner_facts.keys():
+        if key in source_ner_facts.keys():
+            text_ner_fact = text_ner_facts[key]
+            source_ner_fact = source_ner_facts[key]
+            text_values = [fact["Normal spans"] for fact in text_ner_fact]
+            source_values = [fact["Normal spans"] for fact in source_ner_fact]
+            different_values = list(set(text_values) - set(source_values))
+            if len(different_values) > 0:
+                if len(different_values) != 1 or different_values[0] != 'covid-19':
+                    message = f"\nВ тексте появились сущности типа {ner_types[key]}, не совпадающие с сущностями этого типа в источнике: \n"
+
+                    diff_facts = [fact for fact in text_ner_fact if
+                                  fact["Normal spans"] in different_values and fact["Normal spans"] != "covid-19"]
+                    text_fact_texts = "\n\n".join(
+                        [f"Факт: {fact['Normal spans']} {ner_types[key]}\n Текст: {fact['sentence']}" for fact in diff_facts])
+                    error_messages.append(f"{message}{text_fact_texts}")
+        else:
+            message = f"\nВ тексте появился тип сущностей {ner_types[key]}, не представленный в источнике: \n"
+
+            text_fact_texts = "\n\n".join(
+                [f"Факт: {fact['Normal spans']} {ner_types[key]}\n Текст: {fact['sentence']}" for fact in text_ner_facts[key]])
+            error_messages.append(f"{message}{text_fact_texts}")
+    return error_messages
+
+
+def find_first_number_obj_with_given_num(num_fact, num):
+    for numbers in num_fact:
+        if numbers['number'] == num:
+            return numbers
+
+
+def get_facts_from_text(text: str):
+    ner_extractor_obj = NER_extractor()
+    fact_extractor_obj = Fact_extractor()
+
+    _, numerical_facts = fact_extractor_obj.extract_fact_from_text(text)
+    ner_facts = ner_extractor_obj.get_ner_elements(text)
+
+    return numerical_facts, ner_facts
