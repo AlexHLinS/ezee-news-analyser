@@ -141,16 +141,55 @@ def get_antiplag_data_from_uid(uid):
                        'userkey': antiplag_token,
                        'jsonvisible': 'detail'}
 
-    while True:
-        result = json.loads(requests.post(antiplag_request_url, requests_params).text)
-        try:
-            a = result['result_json']
-            break
-        except KeyError:
-            sleep(1000)
+    result = json.loads(requests.post(antiplag_request_url, requests_params).text)
 
     return result
 
+#------
+def get_errors_words(uid:str, text:str):
+    '''
+    :param uid: идентификатор результатов анализа для API text.ru
+    :param text: текст статьи
+    :return: ['номера позиций слов с ошибками в тексте']
+    '''
+    all_ap_data = get_antiplag_data_from_uid(uid)
+    tokens = list(razdel.tokenize(text))
+    words = [_.text for _ in tokens]
+    spell_check = all_ap_data['spell_check']
+    errors = json.loads(spell_check)
+    result = list()
+    for error in errors:
+        result.append(words.index(error['error_text']))
+    return result
+
+def get_relative_urls(uid:str, similarity_criteria:int):
+    """
+    :param uid: идентификатор результатов анализа для API text.ru
+    :param similarity_criteria:  процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
+    :return: [{'url': 'https://адрес сайта', 'plagiat': '100', 'words': ['номера позиций "совпадающих" слов в тексте']}, ...]
+    """
+    result_json = get_antiplag_data_from_uid(test_uid)['result_json']
+    urls = json.loads(result_json)['urls']
+    result = list()
+    for url in urls:
+        if int(url['plagiat']) >= similarity_criteria:
+            result.append(url)
+    return result
+
+def get_relative_urls_and_error_indexes(uid:str, similarity_criteria:int, text:str):
+    """
+    :param uid: идентификатор результатов анализа для API text.ru
+    :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
+    :param text: текст статьи
+    :return: [[{'url': 'https://адрес сайта', 'plagiat': '100', 'words': ['номера позиций "совпадающих" слов в тексте']}, ...], ['номера позиций слов с ошибками в тексте']]
+
+    """
+    urls = get_relative_urls(test_uid,similarity_criteria)
+    errors = get_errors_words(uid, text)
+    result = list()
+    result.append(urls)
+    result.append(errors)
+    return result
 
 # ------------------ black lists
 # TODO: добавить функционал загрузки black lists
