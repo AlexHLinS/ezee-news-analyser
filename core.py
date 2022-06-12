@@ -1,6 +1,6 @@
 from typing import Tuple, Mapping
 import asyncio
-import aux_tools as atls
+from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid
 from aux_tools import TextFeatures, ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
     UniqTestResults, SimilarArticleData, ArticleBaseData
 from data_science.clickbait_predictor import Clickbait_predictor
@@ -9,7 +9,7 @@ from data_science.rationality_intuition_scorer import Rationality_intuition_scor
 from data_science.sentiment_extractor import Sentiment_extractor
 import json
 
-from app.db.crud import update_entry_by_id
+from app.db.crud import get_entry_by_id, update_entry_by_id, Document
 
 
 # TODO: описать и реализовать класс AnalyzedArticle
@@ -132,16 +132,23 @@ from app.db.crud import update_entry_by_id
 '''
 
 ######
-def start_analyze(id:int) -> None:
+def start_analyze(article_id:int) -> None:
     """
-    :param id: индитификатор анализируемой новости в базе данных
+    :param article_id: индитификатор анализируемой новости в базе данных
     :return: None
     """
     # TODO: получить документ
+    document = get_entry_by_id(article_id, Document)
+    text = document.text
+    title = document.title
+    url = document.url
+
     # TODO: проверить есть ли при наличии урл, текст и  заголовок, если текста или заголовка нет - попробовать прогрузить
     # TODO: закинуть запрос по тексту на текстру и получить уид
+    uid = get_antiplag_uid(text)
     # TODO: запустить дс модули и начать их результаты кидать в базу
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
+    ap_data = get_antiplag_data_from_uid(uid)
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
     pass
 
@@ -161,7 +168,7 @@ def get_fake_score(text, title, id) -> Tuple[str, Mapping[str, float]]:
     rationality_intuition_scorer_obj = Rationality_intuition_scorer()
 
     sentiment_scores_dict, _ = sentiment_extractor_obj.get_sentiment_scores(text)
-    eng_title = atls.translate_text(title, 'ru', 'en')
+    eng_title = translate_text(title, 'ru', 'en')
     clickbait_score = clickbait_predictor_obj.get_clickbait_score(eng_title)
     rationality_intuition_scores_dict = rationality_intuition_scorer_obj.get_rationality_intuition_score(text)
     sentiment_scores_dict['clickbait_score'] = clickbait_score
@@ -177,8 +184,8 @@ def get_fake_score_from_url(url, id) -> Tuple[str, Mapping[str, float]]:
     :return:  Текст статьи(новости) str и результаты анализа текста в виде: Dict ["positive": float, "negative": float, "neutral": float, "skip": float,
         "speech": float, "clickbait_score":float]
     """
-    article_text = atls.get_text_from_url(url)[5]
-    article_title = atls.get_text_from_url(url)[0]
+    article_text = get_text_from_url(url)[5]
+    article_title = get_text_from_url(url)[0]
     return get_fake_score(article_text, article_title, id)
 
 
@@ -187,8 +194,8 @@ def get_article_text_and_title(url) -> ArticleBaseData:
     :param url: Ссылка на текст статьи (новости)
     :return: {'article_title':заголовок статьи, 'article_text':текст статьи}
     """
-    article_text = atls.get_text_from_url(url)[5]
-    article_title = atls.get_text_from_url(url)[0]
+    article_text = get_text_from_url(url)[5]
+    article_title =get_text_from_url(url)[0]
     return ArticleBaseData(url=url, title=article_title, text=article_text)
 
 

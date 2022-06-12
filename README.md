@@ -2,10 +2,10 @@
 
 Используемые технологии
 
-- Frontend: <code>in progress...</code>
+- Frontend: React
 - Backend: FastAPI
 - Data Science: <code>in progress...</code>
-- Data Base:  <code>in progress...</code>
+- Data Base:  
 
 ### Структура репозитория:
 - Frontend: исходные файлы клиентской части
@@ -24,15 +24,7 @@
 ### Запуск на локальной машине:
 
 #### Фронтенд:
-1) Перейти в директорию frontend  
-2) Установить зависимости:  
-```bash
-npm install
-```  
-3) Запустить проект в режиме разработки:  
-```bash  
-npm start  
-```  
+Расположен в отдельном [репозитории](https://github.com/DmitryTevtonsky/moscowcityhack2022-frontend).
 #### Бэкенд:  
 1) Перейти в директорию backend  
 2) Установить зависимости
@@ -55,8 +47,9 @@ uvicorn main:app
 
 #### Data Science:  
 1) Для успешной установки ряда модулей потребуется компилятор С++11
-
-```bash apt-get install build-essential -y```
+```bash 
+apt-get install build-essential -y
+```
 2) Перейти в директорию data_science  
 3) Установить зависимости
 ```bash
