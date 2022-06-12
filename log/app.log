@@ -1,0 +1,326 @@
+[1;32mINFO[1;0m: 2022-06-10 00:09:48,743 - "message": Url and text are mutually exclusive, "req_uuid": 1e902c32-2cc1-4c6a-8ea3-ac7c29e03121, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:10:02,787 - "message": Url and text are mutually exclusive, "req_uuid": 2cd3ca38-b7c7-493e-aae8-1b63d9bc4921, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:11:29,228 - "message": Checking if result already exists, "req_uuid": 1791db85-810a-4a4d-9d4d-5bc525d80817, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:11:52,958 - "message": Checking if result already exists, "req_uuid": 9f5e9e41-fe4c-499c-b3a7-a63ab35380df, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:12:24,698 - "message": Checking if result already exists, "req_uuid": 38ba0f4d-233a-45f3-99bf-09cd238fca62, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:14:05,470 - "message": Checking if result already exists, "req_uuid": 44d56662-5e28-44e1-8709-4189da6a9dfd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:14:05,483 - "message": Inserting an entry into "docs", "req_uuid": 44d56662-5e28-44e1-8709-4189da6a9dfd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:14:44,212 - "message": Checking if result already exists, "req_uuid": 55a38d5a-d489-4384-a0a4-cbab94ca00fa, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:14:44,224 - "message": Inserting an entry into "docs", "req_uuid": 55a38d5a-d489-4384-a0a4-cbab94ca00fa, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:20:09,209 - "message": Checking if result already exists, "req_uuid": bba484bb-64ba-49ff-b152-23be07d07895, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:22:26,588 - "message": Checking if result already exists, "req_uuid": 99a26a35-12de-4e35-ade9-83a7864f5bc9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:24:36,289 - "message": None, "req_uuid": 33e0ce42-534a-4b2b-9486-e2442e0d3c19, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:27:29,416 - "message": Checking if result already exists, "req_uuid": c0fa41f9-4f3d-4dd3-b1e4-c9439d1337bd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:27:29,432 - "message": Inserting an entry into "docs", "req_uuid": c0fa41f9-4f3d-4dd3-b1e4-c9439d1337bd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:27:29,436 - "message": Inserting an entry into "analysis_results", "req_uuid": c0fa41f9-4f3d-4dd3-b1e4-c9439d1337bd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:28:06,504 - "message": Checking if result already exists, "req_uuid": b6b02167-2781-43df-9a9e-fc8090e20957, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:28:43,624 - "message": Document already exists, "req_uuid": 8bb19f12-ea6e-4971-ba4d-f065d78ad0ec, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:29:06,629 - "message": Inserting an entry into "docs", "req_uuid": 9ec2401a-eaea-4f8d-ae2f-672d18fd0957, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:29:06,644 - "message": Inserting an entry into "analysis_results", "req_uuid": 9ec2401a-eaea-4f8d-ae2f-672d18fd0957, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:30:41,569 - "message": Document already exists, "req_uuid": 47b7fa3c-4294-4dbe-ad6c-5d4c2092105d, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:30:46,240 - "message": Inserting an entry into "docs", "req_uuid": d555387d-8757-4bb2-ad34-d9b55f9ed246, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:30:46,250 - "message": Inserting an entry into "analysis_results", "req_uuid": d555387d-8757-4bb2-ad34-d9b55f9ed246, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:31:55,976 - "message": Inserting an entry into "docs", "req_uuid": 9f864cfb-5174-4fe2-bc76-47ca39726f15, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:31:55,981 - "message": Inserting an entry into "analysis_results", "req_uuid": 9f864cfb-5174-4fe2-bc76-47ca39726f15, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:33:35,960 - "message": Document already exists, "req_uuid": aa6f91c7-49ff-4a40-ba1f-5ea9fb6d4a24, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:33:42,777 - "message": Inserting an entry into "docs", "req_uuid": 6966d806-5a6a-478f-84f7-84f16a9c1457, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:34:22,383 - "message": Inserting an entry into "docs", "req_uuid": 15c6d631-6c5e-447e-b57c-f36c231c8339, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:35:17,516 - "message": Inserting an entry into "docs", "req_uuid": af4067a7-3d5b-4047-ae62-56371c9fb775, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:38:28,778 - "message": Inserting an entry into "docs", "req_uuid": 069f955d-da0e-43b0-8b7b-e35fc06dd9a1, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:39:40,686 - "message": Inserting an entry into "docs", "req_uuid": 6ac7b155-795e-4db6-8aca-8ff9ece64cd7, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:39:59,814 - "message": Inserting an entry into "docs", "req_uuid": bcf04065-03b8-49c5-bb62-73b4842567f8, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:41:37,327 - "message": Inserting an entry into "docs", "req_uuid": b5c83f44-1dc1-43df-af89-e5903bf651a8, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:41:37,330 - "message": Inserting an entry into "analysis_results", "req_uuid": b5c83f44-1dc1-43df-af89-e5903bf651a8, "method": POST api/docs, "docs_id": 7
+[1;32mINFO[1;0m: 2022-06-10 00:41:37,333 - "message": Starting the analysis, "req_uuid": b5c83f44-1dc1-43df-af89-e5903bf651a8, "method": POST api/docs, "docs_id": 7, "ar_id": 1
+[1;32mINFO[1;0m: 2022-06-10 00:41:55,371 - "message": None, "req_uuid": b03f5b6a-2255-4195-99f8-7f43435f1293, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:42:36,285 - "message": Document already exists, "req_uuid": 6d0a4d7f-a1f5-42fe-83da-261cc34147a8, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:42:43,030 - "message": Inserting an entry into "docs", "req_uuid": 41c6c740-e9a8-4b04-9871-8471f89cdd09, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:42:43,040 - "message": Inserting an entry into "analysis_results", "req_uuid": 41c6c740-e9a8-4b04-9871-8471f89cdd09, "method": POST api/docs, "docs_id": 8
+[1;32mINFO[1;0m: 2022-06-10 00:42:43,050 - "message": Starting the analysis, "req_uuid": 41c6c740-e9a8-4b04-9871-8471f89cdd09, "method": POST api/docs, "docs_id": 8, "ar_id": 2
+[1;32mINFO[1;0m: 2022-06-10 00:42:55,323 - "message": <app.db.models.AnalysisResult object at 0x1048a7fa0>, "req_uuid": dbe99ab4-fdd6-4431-90f4-dd1c6190fbb8, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:42:58,321 - "message": <app.db.models.AnalysisResult object at 0x1048ae910>, "req_uuid": d9c2e453-11c5-4bc7-87d5-eabec3a39c78, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:42:59,159 - "message": <app.db.models.AnalysisResult object at 0x1048a7370>, "req_uuid": 29dfc540-71d1-449e-8333-2d609a54e2e7, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:42:59,981 - "message": <app.db.models.AnalysisResult object at 0x1048ae460>, "req_uuid": 574db9eb-86a9-4d79-940f-888788955594, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:43:00,624 - "message": <app.db.models.AnalysisResult object at 0x1048a7ac0>, "req_uuid": 4889b266-433b-41ab-a860-f485721c0025, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:43:01,339 - "message": <app.db.models.AnalysisResult object at 0x1048aec70>, "req_uuid": 96409660-0ba8-45f0-9cbd-740a5db43244, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:43:02,512 - "message": <app.db.models.AnalysisResult object at 0x1048a7af0>, "req_uuid": e9982605-78ed-44e4-b64b-074c2f7f3016, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:43:03,555 - "message": <app.db.models.AnalysisResult object at 0x104899be0>, "req_uuid": 701bac4e-457e-41b5-af7d-41db0cbbc68a, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:43:04,359 - "message": <app.db.models.AnalysisResult object at 0x104899c40>, "req_uuid": 10d7d40d-a2c9-4835-a3ce-1169c081bde1, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:43:05,258 - "message": <app.db.models.AnalysisResult object at 0x1048ae070>, "req_uuid": 8803f0e5-3f26-4909-aafb-9b3ea0a61dd3, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:09,285 - "message": Inserting an entry into "docs", "req_uuid": 0cb77e43-54e7-40e0-9b21-ec2e2484df39, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:47:09,291 - "message": Inserting an entry into "analysis_results", "req_uuid": 0cb77e43-54e7-40e0-9b21-ec2e2484df39, "method": POST api/docs, "docs_id": 9
+[1;32mINFO[1;0m: 2022-06-10 00:47:09,294 - "message": Starting the analysis, "req_uuid": 0cb77e43-54e7-40e0-9b21-ec2e2484df39, "method": POST api/docs, "docs_id": 9, "ar_id": 3
+[1;32mINFO[1;0m: 2022-06-10 00:47:16,025 - "message": <app.db.models.AnalysisResult object at 0x107867a00>, "req_uuid": 1492b95e-aaf8-4203-9e5b-ac6f5866959a, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:16,903 - "message": <app.db.models.AnalysisResult object at 0x10786c2e0>, "req_uuid": 7652e116-dc13-404c-b2b1-9c9e0bb7c69a, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:17,764 - "message": <app.db.models.AnalysisResult object at 0x1078676d0>, "req_uuid": 249acc22-452a-4ca6-bcf3-f1e6ef052823, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:18,818 - "message": <app.db.models.AnalysisResult object at 0x10786cb20>, "req_uuid": 70286e94-fd49-4065-b018-c95d279d3dab, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:19,715 - "message": <app.db.models.AnalysisResult object at 0x10786cc40>, "req_uuid": 67848baf-65e2-4847-9339-d2972d880b3b, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:20,681 - "message": <app.db.models.AnalysisResult object at 0x10786cd60>, "req_uuid": 29b4de04-542f-4a8c-8499-039434e537d6, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:21,532 - "message": <app.db.models.AnalysisResult object at 0x10786ce80>, "req_uuid": c938d59e-b463-49ab-9dc1-c56363f39afa, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:22,458 - "message": <app.db.models.AnalysisResult object at 0x10786cfa0>, "req_uuid": da8e8298-6be5-4580-933a-f934219081b8, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:23,454 - "message": <app.db.models.AnalysisResult object at 0x107858b50>, "req_uuid": a7802d5d-3574-4837-ba2d-f6b3713cb9a7, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:24,349 - "message": <app.db.models.AnalysisResult object at 0x10786c730>, "req_uuid": bc85dd22-c5a1-41d2-a438-89259ea8d307, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:25,333 - "message": <app.db.models.AnalysisResult object at 0x107858730>, "req_uuid": e2754741-5063-4d7a-a2e1-6fca803cd466, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:26,208 - "message": <app.db.models.AnalysisResult object at 0x10786c370>, "req_uuid": 7a1e1ed1-c509-4839-a7d9-6b9017014dd3, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:27,210 - "message": <app.db.models.AnalysisResult object at 0x107858ca0>, "req_uuid": 4e7425d4-e691-4fdf-99eb-22cd5af5a044, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:28,124 - "message": <app.db.models.AnalysisResult object at 0x10786c850>, "req_uuid": de7f6453-090b-423e-a05a-cb87530f0551, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:29,015 - "message": <app.db.models.AnalysisResult object at 0x1078585e0>, "req_uuid": 52f0af79-94c4-43c2-8e3a-97eb6cde42eb, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:29,909 - "message": <app.db.models.AnalysisResult object at 0x10786cf40>, "req_uuid": 7c15ba19-1698-4061-b297-6ef9b86b0d4d, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:30,945 - "message": <app.db.models.AnalysisResult object at 0x106f50e50>, "req_uuid": c81ad435-db66-4cbd-b2ab-9442f329bb23, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:32,902 - "message": <app.db.models.AnalysisResult object at 0x10786c9d0>, "req_uuid": 34254201-e4ec-4c8b-a82c-980b809bd378, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:33,854 - "message": <app.db.models.AnalysisResult object at 0x10786cf70>, "req_uuid": a954fdee-60f5-4e58-b283-4c7f3ba45c9f, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:34,625 - "message": <app.db.models.AnalysisResult object at 0x106fbcd90>, "req_uuid": 3ac01451-7103-4d23-80ef-834eae81bc9e, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:47:35,213 - "message": <app.db.models.AnalysisResult object at 0x107867a90>, "req_uuid": 6a30e18b-59f1-4eb3-8d89-ecbcf8616630, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:50:45,699 - "message": <app.db.models.AnalysisResult object at 0x1072a7f40>, "req_uuid": 46d7bae7-7b2c-418f-b60d-8062e71837ac, "method": GET api/analysis-results
+[1;32mINFO[1;0m: 2022-06-10 00:50:52,576 - "message": Document already exists, "req_uuid": dff52d72-4017-4636-9692-28a3115e5866, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:50:55,892 - "message": Inserting an entry into "docs", "req_uuid": d2bc1958-b357-4142-b4c7-3f5ddf05b95b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:50:55,902 - "message": Inserting an entry into "analysis_results", "req_uuid": d2bc1958-b357-4142-b4c7-3f5ddf05b95b, "method": POST api/docs, "docs_id": 10
+[1;32mINFO[1;0m: 2022-06-10 00:50:55,912 - "message": Starting the analysis, "req_uuid": d2bc1958-b357-4142-b4c7-3f5ddf05b95b, "method": POST api/docs, "docs_id": 10, "ar_id": 4
+[1;32mINFO[1;0m: 2022-06-10 00:51:54,544 - "message": Document already exists, "req_uuid": 70c73514-42f1-481d-afb0-6bbc8064fd88, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:51:58,410 - "message": Inserting an entry into "docs", "req_uuid": b87cad10-18b5-4f14-bb1a-9432f5c013a3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:51:58,419 - "message": Inserting an entry into "analysis_results", "req_uuid": b87cad10-18b5-4f14-bb1a-9432f5c013a3, "method": POST api/docs, "docs_id": 11
+[1;32mINFO[1;0m: 2022-06-10 00:51:58,428 - "message": Starting the analysis, "req_uuid": b87cad10-18b5-4f14-bb1a-9432f5c013a3, "method": POST api/docs, "docs_id": 11, "ar_id": 5
+[1;32mINFO[1;0m: 2022-06-10 00:52:03,344 - "message": <app.db.models.AnalysisResult object at 0x104a06400>, "req_uuid": f8448525-a1ea-4826-b709-80a760eab2fc, "method": GET api/analysis-results/metrics_summary
+[1;32mINFO[1;0m: 2022-06-10 00:52:41,857 - "message": Document already exists, "req_uuid": bf9049ad-39c9-4232-a5ca-93dad0f86766, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:52:47,919 - "message": None, "req_uuid": ec5e2640-aacf-4e60-91f6-0f528a116678, "method": GET api/analysis-results/metrics_summary
+[1;32mINFO[1;0m: 2022-06-10 00:53:01,038 - "message": <app.db.models.AnalysisResult object at 0x1054b74c0>, "req_uuid": 9865bd2a-0010-4c61-8c3e-c9f3cd4b0a37, "method": GET api/analysis-results/metrics_summary
+[1;32mINFO[1;0m: 2022-06-10 00:53:25,925 - "message": <app.db.models.AnalysisResult object at 0x104be1d90>, "req_uuid": a3a82b21-676f-4f93-b24c-ddb46299c5d1, "method": GET api/analysis-results/metrics_summary
+[1;32mINFO[1;0m: 2022-06-10 00:53:27,316 - "message": <app.db.models.AnalysisResult object at 0x10700cb50>, "req_uuid": d6c85ac4-fa1f-4e42-b06f-9a13dc8a477f, "method": GET api/analysis-results/metrics_summary
+[1;32mINFO[1;0m: 2022-06-10 00:53:29,123 - "message": <app.db.models.AnalysisResult object at 0x10700cca0>, "req_uuid": eebea1ac-23b0-48ff-9682-deaaf5024bbb, "method": GET api/analysis-results/metrics_summary
+[1;32mINFO[1;0m: 2022-06-10 00:55:23,568 - "message": Document already exists, "req_uuid": c1255a11-211c-45fa-baa6-123baa738ce3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:55:28,776 - "message": Inserting an entry into "docs", "req_uuid": f1934c78-67b2-4af4-ac6f-a60747cee8a1, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 00:55:28,787 - "message": Inserting an entry into "analysis_results", "req_uuid": f1934c78-67b2-4af4-ac6f-a60747cee8a1, "method": POST api/docs, "docs_id": 12
+[1;32mINFO[1;0m: 2022-06-10 00:55:28,796 - "message": Starting the analysis, "req_uuid": f1934c78-67b2-4af4-ac6f-a60747cee8a1, "method": POST api/docs, "docs_id": 12, "ar_id": 6
+[1;32mINFO[1;0m: 2022-06-10 00:55:48,816 - "message": Analysis has been finished, "req_uuid": f1934c78-67b2-4af4-ac6f-a60747cee8a1, "method": POST api/docs, "docs_id": 12, "ar_id": 6
+[1;32mINFO[1;0m: 2022-06-10 16:33:06,551 - "message": Inserting an entry into "docs", "req_uuid": 19baf4c1-fd76-483a-89cf-444b66e44a2f, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:33:06,557 - "message": Inserting an entry into "analysis_results", "req_uuid": 19baf4c1-fd76-483a-89cf-444b66e44a2f, "method": POST api/docs, "doc_id": 13
+[1;32mINFO[1;0m: 2022-06-10 16:37:37,670 - "message": Document already exists, "req_uuid": 3f8da579-1550-42a3-bf83-ea12a5a6b516, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:38:37,792 - "message": Document already exists, "req_uuid": 47c9eed0-076d-40a5-afaf-10846b4b8bb3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:38:43,354 - "message": Inserting an entry into "analysis_results", "req_uuid": 8a7bedfd-2226-482d-928a-93901c4419dc, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:38:43,370 - "message": New: 1, "req_uuid": 8a7bedfd-2226-482d-928a-93901c4419dc, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:38:43,371 - "message": Inserting an entry into "docs", "req_uuid": 8a7bedfd-2226-482d-928a-93901c4419dc, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:38:43,379 - "message": Starting the analysis, "req_uuid": 8a7bedfd-2226-482d-928a-93901c4419dc, "method": POST api/docs, "ar_id": 1
+[1;32mINFO[1;0m: 2022-06-10 16:39:03,383 - "message": Analysis has been finished, "req_uuid": 8a7bedfd-2226-482d-928a-93901c4419dc, "method": POST api/docs, "ar_id": 1
+[1;32mINFO[1;0m: 2022-06-10 16:42:43,824 - "message": Document already exists, "req_uuid": d42ef275-ff3b-4333-a5bc-c3aad8c14947, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:42:48,277 - "message": Inserting an entry into "analysis_results", "req_uuid": b0216c12-ef51-42ac-9134-b56f06c3b04a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:42:48,289 - "message": New: 2, "req_uuid": b0216c12-ef51-42ac-9134-b56f06c3b04a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:42:48,289 - "message": Inserting an entry into "docs", "req_uuid": b0216c12-ef51-42ac-9134-b56f06c3b04a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:42:48,298 - "message": Starting the analysis, "req_uuid": b0216c12-ef51-42ac-9134-b56f06c3b04a, "method": POST api/docs, "ar_id": 2
+[1;32mINFO[1;0m: 2022-06-10 16:45:07,846 - "message": Document already exists, "req_uuid": 7c2380c9-46cc-4c40-a5b0-ca3234d1e52c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:08,469 - "message": Document already exists, "req_uuid": 9dde5478-0c27-44a0-9d7b-d30ea05f5990, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:09,049 - "message": Document already exists, "req_uuid": e9f2b01b-2396-4c45-a42a-2939d11ab1a9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:09,521 - "message": Document already exists, "req_uuid": 8d87f2f7-900b-4d44-a2ab-ce455276d07c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:10,019 - "message": Document already exists, "req_uuid": 106478a8-7b12-46c3-b4cf-66522d3fae34, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:12,946 - "message": Inserting an entry into "analysis_results", "req_uuid": 8d2f172c-d991-47a9-a5a6-eb237fe05e48, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:12,963 - "message": New: 3, "req_uuid": 8d2f172c-d991-47a9-a5a6-eb237fe05e48, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:12,963 - "message": Inserting an entry into "docs", "req_uuid": 8d2f172c-d991-47a9-a5a6-eb237fe05e48, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:45:12,972 - "message": Starting the analysis, "req_uuid": 8d2f172c-d991-47a9-a5a6-eb237fe05e48, "method": POST api/docs, "ar_id": 3
+[1;32mINFO[1;0m: 2022-06-10 16:46:27,620 - "message": Document already exists, "req_uuid": b4f94b50-0d35-441c-829c-b26d82451408, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:46:55,989 - "message": Inserting an entry into "analysis_results", "req_uuid": 5e216939-f482-4c96-99ca-7845145d6b01, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:46:56,004 - "message": New: 4, "req_uuid": 5e216939-f482-4c96-99ca-7845145d6b01, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:46:56,004 - "message": Inserting an entry into "docs", "req_uuid": 5e216939-f482-4c96-99ca-7845145d6b01, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:46:56,009 - "message": Starting the analysis, "req_uuid": 5e216939-f482-4c96-99ca-7845145d6b01, "method": POST api/docs, "ar_id": 4
+[1;32mINFO[1;0m: 2022-06-10 16:47:11,057 - "message": Analysis has been finished, "req_uuid": 5e216939-f482-4c96-99ca-7845145d6b01, "method": POST api/docs, "ar_id": 4
+[1;32mINFO[1;0m: 2022-06-10 16:48:16,127 - "message": Document already exists, "req_uuid": 3ed26e4f-4d8d-49d9-b5db-c794afc4ba16, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:48:21,092 - "message": Inserting an entry into "analysis_results", "req_uuid": ced8d521-5730-49d9-9b81-417a3245e150, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:48:21,106 - "message": New: 5, "req_uuid": ced8d521-5730-49d9-9b81-417a3245e150, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:48:21,106 - "message": Inserting an entry into "docs", "req_uuid": ced8d521-5730-49d9-9b81-417a3245e150, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:48:21,116 - "message": Starting the analysis, "req_uuid": ced8d521-5730-49d9-9b81-417a3245e150, "method": POST api/docs, "ar_id": 5
+[1;32mINFO[1;0m: 2022-06-10 16:48:36,153 - "message": Analysis has been finished, "req_uuid": ced8d521-5730-49d9-9b81-417a3245e150, "method": POST api/docs, "ar_id": 5
+[1;32mINFO[1;0m: 2022-06-10 16:59:36,673 - "message": Inserting an entry into "analysis_results", "req_uuid": 840c17a8-7102-4b44-a5ed-21f608a95405, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:59:36,681 - "message": New: 6, "req_uuid": 840c17a8-7102-4b44-a5ed-21f608a95405, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:59:36,682 - "message": Inserting an entry into "docs", "req_uuid": 840c17a8-7102-4b44-a5ed-21f608a95405, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:59:36,687 - "message": Starting the analysis, "req_uuid": 840c17a8-7102-4b44-a5ed-21f608a95405, "method": POST api/docs, "ar_id": 6
+[1;32mINFO[1;0m: 2022-06-10 16:59:51,745 - "message": Analysis has been finished, "req_uuid": 840c17a8-7102-4b44-a5ed-21f608a95405, "method": POST api/docs, "ar_id": 6
+[1;32mINFO[1;0m: 2022-06-10 17:01:52,662 - "message": Document not found, "req_uuid": 54330b68-9951-4bc6-bd31-48281ca3ba7c, "method": GET api/docs/analyze-sources, "doc_id": 123
+[1;32mINFO[1;0m: 2022-06-10 17:02:13,373 - "message": entity_uuid is not provided for the document, "req_uuid": 4a5016e6-46ad-40f2-be47-44eee79d1774, "method": GET api/docs/analyze-sources, "doc_id": 1
+[1;32mINFO[1;0m: 2022-06-10 17:02:14,263 - "message": entity_uuid is not provided for the document, "req_uuid": 854ff8ab-d09a-4aa6-88b5-5ee046731a2d, "method": GET api/docs/analyze-sources, "doc_id": 1
+[1;31mERROR[1;0m: 2022-06-10 14:25:22,222 - "message": Url and text are mutually exclusive, "req_uuid": 3cf51dcb-34a7-4cf7-892d-5ce9868e3b6f, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:59:27,227 - "message": Inserting an entry into "docs", "req_uuid": 91844168-c2d0-4423-a15b-19046a27e9d9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 16:59:27,361 - "message": Inserting an entry into "analysis_results", "req_uuid": 91844168-c2d0-4423-a15b-19046a27e9d9, "method": POST api/docs, "docs_id": 13
+[1;32mINFO[1;0m: 2022-06-10 16:59:27,374 - "message": Starting the analysis, "req_uuid": 91844168-c2d0-4423-a15b-19046a27e9d9, "method": POST api/docs, "docs_id": 13, "ar_id": 7
+[1;32mINFO[1;0m: 2022-06-10 16:59:47,415 - "message": Analysis has been finished, "req_uuid": 91844168-c2d0-4423-a15b-19046a27e9d9, "method": POST api/docs, "docs_id": 13, "ar_id": 7
+[1;32mINFO[1;0m: 2022-06-10 17:22:52,081 - "message": Inserting an entry into "analysis_results", "req_uuid": fedeb23a-c011-4a30-9b8e-ece55a24a99e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:22:52,086 - "message": Inserting an entry into "docs", "req_uuid": fedeb23a-c011-4a30-9b8e-ece55a24a99e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:22:52,090 - "message": Starting the analysis, "req_uuid": fedeb23a-c011-4a30-9b8e-ece55a24a99e, "method": POST api/docs, "ar_id": 7
+[1;32mINFO[1;0m: 2022-06-10 17:22:57,861 - "message": entity_uuid is not provided for the document, "req_uuid": 44c03f85-c3e3-4445-86e6-a768bf4da0a5, "method": GET api/docs/analyze-sources, "doc_id": 7
+[1;32mINFO[1;0m: 2022-06-10 17:22:58,783 - "message": entity_uuid is not provided for the document, "req_uuid": 5905ef03-c2c3-41e3-a0c5-c237bc068634, "method": GET api/docs/analyze-sources, "doc_id": 7
+[1;32mINFO[1;0m: 2022-06-10 17:23:07,134 - "message": Analysis has been finished, "req_uuid": fedeb23a-c011-4a30-9b8e-ece55a24a99e, "method": POST api/docs, "ar_id": 7
+[1;32mINFO[1;0m: 2022-06-10 17:30:14,461 - "message": Inserting an entry into "analysis_results", "req_uuid": 3bcf07ed-4f12-402e-bcb8-dfe409feecf4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:14,470 - "message": Inserting an entry into "docs", "req_uuid": 3bcf07ed-4f12-402e-bcb8-dfe409feecf4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:14,474 - "message": Starting the analysis, "req_uuid": 3bcf07ed-4f12-402e-bcb8-dfe409feecf4, "method": POST api/docs, "ar_id": 8
+[1;32mINFO[1;0m: 2022-06-10 17:30:17,090 - "message": Inserting an entry into "analysis_results", "req_uuid": f51f2006-b6bc-4a0a-8d61-81b212ed5d36, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:17,094 - "message": Inserting an entry into "docs", "req_uuid": f51f2006-b6bc-4a0a-8d61-81b212ed5d36, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:17,102 - "message": Starting the analysis, "req_uuid": f51f2006-b6bc-4a0a-8d61-81b212ed5d36, "method": POST api/docs, "ar_id": 9
+[1;32mINFO[1;0m: 2022-06-10 17:30:17,731 - "message": Inserting an entry into "analysis_results", "req_uuid": ef7b567d-a7f8-4a80-b299-45b4656f9a14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:17,738 - "message": Inserting an entry into "docs", "req_uuid": ef7b567d-a7f8-4a80-b299-45b4656f9a14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:17,744 - "message": Starting the analysis, "req_uuid": ef7b567d-a7f8-4a80-b299-45b4656f9a14, "method": POST api/docs, "ar_id": 10
+[1;32mINFO[1;0m: 2022-06-10 17:30:18,238 - "message": Inserting an entry into "analysis_results", "req_uuid": 19114843-d8ba-4237-baa4-34cf44ea3f7e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:18,242 - "message": Inserting an entry into "docs", "req_uuid": 19114843-d8ba-4237-baa4-34cf44ea3f7e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:30:18,248 - "message": Starting the analysis, "req_uuid": 19114843-d8ba-4237-baa4-34cf44ea3f7e, "method": POST api/docs, "ar_id": 11
+[1;32mINFO[1;0m: 2022-06-10 17:30:29,508 - "message": Analysis has been finished, "req_uuid": 3bcf07ed-4f12-402e-bcb8-dfe409feecf4, "method": POST api/docs, "ar_id": 8
+[1;32mINFO[1;0m: 2022-06-10 17:30:32,145 - "message": Analysis has been finished, "req_uuid": f51f2006-b6bc-4a0a-8d61-81b212ed5d36, "method": POST api/docs, "ar_id": 9
+[1;32mINFO[1;0m: 2022-06-10 17:30:32,781 - "message": Analysis has been finished, "req_uuid": ef7b567d-a7f8-4a80-b299-45b4656f9a14, "method": POST api/docs, "ar_id": 10
+[1;32mINFO[1;0m: 2022-06-10 17:30:33,290 - "message": Analysis has been finished, "req_uuid": 19114843-d8ba-4237-baa4-34cf44ea3f7e, "method": POST api/docs, "ar_id": 11
+[1;32mINFO[1;0m: 2022-06-10 17:38:33,672 - "message": Inserting an entry into "analysis_results", "req_uuid": 5e2f204d-9860-4103-85a1-525a4c3e6947, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:38:33,677 - "message": Inserting an entry into "docs", "req_uuid": 5e2f204d-9860-4103-85a1-525a4c3e6947, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-10 17:38:33,681 - "message": Starting the analysis, "req_uuid": 5e2f204d-9860-4103-85a1-525a4c3e6947, "method": POST api/docs, "ar_id": 12
+[1;32mINFO[1;0m: 2022-06-10 17:38:48,756 - "message": Analysis has been finished, "req_uuid": 5e2f204d-9860-4103-85a1-525a4c3e6947, "method": POST api/docs, "ar_id": 12
+[1;32mINFO[1;0m: 2022-06-11 09:47:49,844 - "message": Inserting an entry into "analysis_results", "req_uuid": 6bc40aec-f411-4a7f-bf62-d06537acbf52, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 09:47:49,850 - "message": Inserting an entry into "docs", "req_uuid": 6bc40aec-f411-4a7f-bf62-d06537acbf52, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 09:47:49,854 - "message": Starting the analysis, "req_uuid": 6bc40aec-f411-4a7f-bf62-d06537acbf52, "method": POST api/docs, "ar_id": 13
+[1;32mINFO[1;0m: 2022-06-11 09:48:04,896 - "message": Analysis has been finished, "req_uuid": 6bc40aec-f411-4a7f-bf62-d06537acbf52, "method": POST api/docs, "ar_id": 13
+[1;32mINFO[1;0m: 2022-06-11 10:22:32,139 - "message": Inserting an entry into "analysis_results", "req_uuid": fae3284f-9509-4a21-bca8-6b2ec3727aac, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 10:22:32,144 - "message": Inserting an entry into "docs", "req_uuid": fae3284f-9509-4a21-bca8-6b2ec3727aac, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 10:22:32,147 - "message": Starting the analysis, "req_uuid": fae3284f-9509-4a21-bca8-6b2ec3727aac, "method": POST api/docs, "ar_id": 14
+[1;32mINFO[1;0m: 2022-06-11 10:22:47,212 - "message": Analysis has been finished, "req_uuid": fae3284f-9509-4a21-bca8-6b2ec3727aac, "method": POST api/docs, "ar_id": 14
+[1;32mINFO[1;0m: 2022-06-11 23:52:36,648 - "message": Inserting an entry into "analysis_results", "req_uuid": e8c03765-dd0d-4bf3-9357-46f8851b4dc7, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:36,654 - "message": Inserting an entry into "docs", "req_uuid": e8c03765-dd0d-4bf3-9357-46f8851b4dc7, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:36,657 - "message": Starting the analysis, "req_uuid": e8c03765-dd0d-4bf3-9357-46f8851b4dc7, "method": POST api/docs, "ar_id": 15
+[1;32mINFO[1;0m: 2022-06-11 23:52:41,756 - "message": Inserting an entry into "analysis_results", "req_uuid": 4401e768-efef-4df2-b045-4dbe2b031a85, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:41,760 - "message": Inserting an entry into "docs", "req_uuid": 4401e768-efef-4df2-b045-4dbe2b031a85, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:41,765 - "message": Starting the analysis, "req_uuid": 4401e768-efef-4df2-b045-4dbe2b031a85, "method": POST api/docs, "ar_id": 16
+[1;32mINFO[1;0m: 2022-06-11 23:52:42,518 - "message": Inserting an entry into "analysis_results", "req_uuid": 56401a71-3aa9-47b4-91d1-2bb9d38d8b60, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:42,523 - "message": Inserting an entry into "docs", "req_uuid": 56401a71-3aa9-47b4-91d1-2bb9d38d8b60, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:42,529 - "message": Starting the analysis, "req_uuid": 56401a71-3aa9-47b4-91d1-2bb9d38d8b60, "method": POST api/docs, "ar_id": 17
+[1;32mINFO[1;0m: 2022-06-11 23:52:43,131 - "message": Inserting an entry into "analysis_results", "req_uuid": 97605ab6-4bad-45d5-9c07-99f018715a11, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:43,139 - "message": Inserting an entry into "docs", "req_uuid": 97605ab6-4bad-45d5-9c07-99f018715a11, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:52:43,146 - "message": Starting the analysis, "req_uuid": 97605ab6-4bad-45d5-9c07-99f018715a11, "method": POST api/docs, "ar_id": 18
+[1;32mINFO[1;0m: 2022-06-11 23:52:51,690 - "message": Analysis has been finished, "req_uuid": e8c03765-dd0d-4bf3-9357-46f8851b4dc7, "method": POST api/docs, "ar_id": 15
+[1;32mINFO[1;0m: 2022-06-11 23:52:56,806 - "message": Analysis has been finished, "req_uuid": 4401e768-efef-4df2-b045-4dbe2b031a85, "method": POST api/docs, "ar_id": 16
+[1;32mINFO[1;0m: 2022-06-11 23:52:57,565 - "message": Analysis has been finished, "req_uuid": 56401a71-3aa9-47b4-91d1-2bb9d38d8b60, "method": POST api/docs, "ar_id": 17
+[1;32mINFO[1;0m: 2022-06-11 23:52:58,184 - "message": Analysis has been finished, "req_uuid": 97605ab6-4bad-45d5-9c07-99f018715a11, "method": POST api/docs, "ar_id": 18
+[1;32mINFO[1;0m: 2022-06-11 23:57:14,683 - "message": Inserting an entry into "analysis_results", "req_uuid": 46208c94-f6cf-4900-a297-09242aa885fe, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:57:14,693 - "message": Inserting an entry into "docs", "req_uuid": 46208c94-f6cf-4900-a297-09242aa885fe, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-11 23:57:14,697 - "message": Starting the analysis, "req_uuid": 46208c94-f6cf-4900-a297-09242aa885fe, "method": POST api/docs, "ar_id": 19
+[1;32mINFO[1;0m: 2022-06-11 23:57:29,752 - "message": Analysis has been finished, "req_uuid": 46208c94-f6cf-4900-a297-09242aa885fe, "method": POST api/docs, "ar_id": 19
+[1;32mINFO[1;0m: 2022-06-12 01:14:27,239 - "message": Inserting an entry into "analysis_results", "req_uuid": 2fc25b86-f8c9-4e77-88c8-0e8d65b5503a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:14:27,257 - "message": Inserting an entry into "docs", "req_uuid": 2fc25b86-f8c9-4e77-88c8-0e8d65b5503a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:15:14,695 - "message": Inserting an entry into "analysis_results", "req_uuid": 97f138d7-3294-4436-8cf3-d20afee356d2, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:15:29,278 - "message": Inserting an entry into "docs", "req_uuid": 97f138d7-3294-4436-8cf3-d20afee356d2, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:16:14,376 - "message": Inserting an entry into "analysis_results", "req_uuid": 3fc44ddc-08bc-4cec-9426-7b574cbe183f, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:16:24,178 - "message": Inserting an entry into "docs", "req_uuid": 3fc44ddc-08bc-4cec-9426-7b574cbe183f, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:16:46,256 - "message": Inserting an entry into "analysis_results", "req_uuid": 962b6490-1bcf-4e2d-b620-0bcd18b2ff9b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 01:16:46,259 - "message": Inserting an entry into "docs", "req_uuid": 962b6490-1bcf-4e2d-b620-0bcd18b2ff9b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:11:57,116 - "message": Inserting an entry into "analysis_results", "req_uuid": d7704d51-76a0-468b-a503-1373804ae8d4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:11:57,121 - "message": Inserting an entry into "docs", "req_uuid": d7704d51-76a0-468b-a503-1373804ae8d4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:17:15,381 - "message": Inserting an entry into "analysis_results", "req_uuid": 6b7f5acc-2b8e-41b0-ae95-02cd15996f61, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:17:15,388 - "message": Inserting an entry into "docs", "req_uuid": 6b7f5acc-2b8e-41b0-ae95-02cd15996f61, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:17:15,392 - "message": Starting the analysis, "req_uuid": 6b7f5acc-2b8e-41b0-ae95-02cd15996f61, "method": POST api/docs, "doc_id": 35, "ar_id": 25
+[1;32mINFO[1;0m: 2022-06-12 02:17:30,440 - "message": Analysis has been finished, "req_uuid": 6b7f5acc-2b8e-41b0-ae95-02cd15996f61, "method": POST api/docs, "doc_id": 35, "ar_id": 25
+[1;32mINFO[1;0m: 2022-06-12 02:19:06,558 - "message": Document already exists, "req_uuid": 5967879b-7a27-4064-94b6-4e2fc7ab296b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:19:12,538 - "message": Inserting an entry into "analysis_results", "req_uuid": a835f1a4-e3a4-4546-b37b-68d3116f925b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:19:12,547 - "message": Inserting an entry into "docs", "req_uuid": a835f1a4-e3a4-4546-b37b-68d3116f925b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:19:12,555 - "message": Starting the analysis, "req_uuid": a835f1a4-e3a4-4546-b37b-68d3116f925b, "method": POST api/docs, "doc_id": 36, "ar_id": 29
+[1;32mINFO[1;0m: 2022-06-12 02:19:27,591 - "message": Analysis has been finished, "req_uuid": a835f1a4-e3a4-4546-b37b-68d3116f925b, "method": POST api/docs, "doc_id": 36, "ar_id": 29
+[1;32mINFO[1;0m: 2022-06-12 02:20:08,681 - "message": Document already exists, "req_uuid": 3f398c38-6b78-4897-9f56-f07399cf8a7b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:20:17,326 - "message": Inserting an entry into "analysis_results", "req_uuid": f40a79bb-3932-4c58-a1ec-d34b398bcc8e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:20:17,339 - "message": Inserting an entry into "docs", "req_uuid": f40a79bb-3932-4c58-a1ec-d34b398bcc8e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:20:17,345 - "message": Starting the analysis, "req_uuid": f40a79bb-3932-4c58-a1ec-d34b398bcc8e, "method": POST api/docs, "doc_id": 37, "ar_id": 33
+[1;32mINFO[1;0m: 2022-06-12 02:20:32,399 - "message": Analysis has been finished, "req_uuid": f40a79bb-3932-4c58-a1ec-d34b398bcc8e, "method": POST api/docs, "doc_id": 37, "ar_id": 33
+[1;32mINFO[1;0m: 2022-06-12 02:21:44,375 - "message": Document already exists, "req_uuid": 4019726a-a14c-4809-b957-0dd93f38b43e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:22:10,936 - "message": Inserting an entry into "analysis_results", "req_uuid": a0054e05-bc31-45e6-9b8b-5b88a3efe325, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:22:10,948 - "message": Inserting an entry into "docs", "req_uuid": a0054e05-bc31-45e6-9b8b-5b88a3efe325, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:22:10,954 - "message": Starting the analysis, "req_uuid": a0054e05-bc31-45e6-9b8b-5b88a3efe325, "method": POST api/docs, "doc_id": 38, "ar_id": 37
+[1;32mINFO[1;0m: 2022-06-12 02:23:02,212 - "message": Inserting an entry into "analysis_results", "req_uuid": 51c4cf1a-7d69-4c30-b45a-c0ad37b3e934, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:23:02,218 - "message": Inserting an entry into "docs", "req_uuid": 51c4cf1a-7d69-4c30-b45a-c0ad37b3e934, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:23:02,222 - "message": Starting the analysis, "req_uuid": 51c4cf1a-7d69-4c30-b45a-c0ad37b3e934, "method": POST api/docs, "doc_id": 39, "ar_id": 38
+[1;32mINFO[1;0m: 2022-06-12 02:23:03,201 - "message": Document already exists, "req_uuid": 9f4aa5c0-82ba-47b2-b94b-adf3f6c6807d, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:23:03,945 - "message": Document already exists, "req_uuid": 8d556307-15a0-4ee7-a011-b3ed2f817eb8, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:23:08,705 - "message": Inserting an entry into "analysis_results", "req_uuid": 621b2ea7-4c98-4d47-9abf-239c7735f929, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:23:08,708 - "message": Inserting an entry into "docs", "req_uuid": 621b2ea7-4c98-4d47-9abf-239c7735f929, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:23:08,712 - "message": Starting the analysis, "req_uuid": 621b2ea7-4c98-4d47-9abf-239c7735f929, "method": POST api/docs, "doc_id": 40, "ar_id": 39
+[1;32mINFO[1;0m: 2022-06-12 02:24:19,947 - "message": Document already exists, "req_uuid": 72e40780-1756-465b-a403-0b9127416f2c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:24:37,040 - "message": Inserting an entry into "analysis_results", "req_uuid": ee0eca76-d5d6-46be-8279-c367b047493c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:24:37,053 - "message": Inserting an entry into "docs", "req_uuid": ee0eca76-d5d6-46be-8279-c367b047493c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:24:37,061 - "message": Starting the analysis, "req_uuid": ee0eca76-d5d6-46be-8279-c367b047493c, "method": POST api/docs, "doc_id": 41, "ar_id": 40
+[1;32mINFO[1;0m: 2022-06-12 02:25:11,114 - "message": Document already exists, "req_uuid": 6c62c820-eb1b-4ff5-915e-3dd47cc5adca, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:25:14,531 - "message": Inserting an entry into "analysis_results", "req_uuid": fe52405e-db4d-4123-828c-efc7c5d3384c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:25:14,544 - "message": Inserting an entry into "docs", "req_uuid": fe52405e-db4d-4123-828c-efc7c5d3384c, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:25:14,551 - "message": Starting the analysis, "req_uuid": fe52405e-db4d-4123-828c-efc7c5d3384c, "method": POST api/docs, "doc_id": 42, "ar_id": 41
+[1;32mINFO[1;0m: 2022-06-12 02:26:19,193 - "message": Document already exists, "req_uuid": 8c6cbb28-8304-4e5c-b35d-7f7e7e626dac, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:26:23,504 - "message": Inserting an entry into "analysis_results", "req_uuid": fc202d39-2d45-4fa5-930d-e1a8f31ffc73, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:26:23,518 - "message": Inserting an entry into "docs", "req_uuid": fc202d39-2d45-4fa5-930d-e1a8f31ffc73, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:26:23,521 - "message": Starting the analysis, "req_uuid": fc202d39-2d45-4fa5-930d-e1a8f31ffc73, "method": POST api/docs, "doc_id": 43, "ar_id": 42
+[1;32mINFO[1;0m: 2022-06-12 02:26:48,297 - "message": Inserting an entry into "analysis_results", "req_uuid": 231a3149-dd9c-4ffa-96da-60622ac26688, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:26:48,302 - "message": Inserting an entry into "docs", "req_uuid": 231a3149-dd9c-4ffa-96da-60622ac26688, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:26:48,304 - "message": Starting the analysis, "req_uuid": 231a3149-dd9c-4ffa-96da-60622ac26688, "method": POST api/docs, "doc_id": 44, "ar_id": 43
+[1;32mINFO[1;0m: 2022-06-12 02:27:15,381 - "message": Inserting an entry into "analysis_results", "req_uuid": c6839305-2bce-428f-b442-8990b80cf5f0, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:27:15,386 - "message": Inserting an entry into "docs", "req_uuid": c6839305-2bce-428f-b442-8990b80cf5f0, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:27:15,389 - "message": Starting the analysis, "req_uuid": c6839305-2bce-428f-b442-8990b80cf5f0, "method": POST api/docs, "doc_id": 45, "ar_id": 44
+[1;32mINFO[1;0m: 2022-06-12 02:28:18,268 - "message": Inserting an entry into "analysis_results", "req_uuid": fdfa5f5f-b408-4f02-8120-1430792c8ba8, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:28:18,276 - "message": Inserting an entry into "docs", "req_uuid": fdfa5f5f-b408-4f02-8120-1430792c8ba8, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:28:18,278 - "message": Starting the analysis, "req_uuid": fdfa5f5f-b408-4f02-8120-1430792c8ba8, "method": POST api/docs, "doc_id": 46, "ar_id": 45
+[1;32mINFO[1;0m: 2022-06-12 02:29:27,903 - "message": Inserting an entry into "analysis_results", "req_uuid": 17e67b66-f72c-44f1-ac74-1b5a5b6f19c9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:29:27,914 - "message": Inserting an entry into "docs", "req_uuid": 17e67b66-f72c-44f1-ac74-1b5a5b6f19c9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:29:27,921 - "message": Starting the analysis, "req_uuid": 17e67b66-f72c-44f1-ac74-1b5a5b6f19c9, "method": POST api/docs, "doc_id": 47, "ar_id": 46
+[1;32mINFO[1;0m: 2022-06-12 02:30:56,536 - "message": Inserting an entry into "analysis_results", "req_uuid": febd3e23-d175-4eb1-a0bd-a79c14b65162, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:31:14,999 - "message": Inserting an entry into "docs", "req_uuid": febd3e23-d175-4eb1-a0bd-a79c14b65162, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:31:31,605 - "message": Starting the analysis, "req_uuid": febd3e23-d175-4eb1-a0bd-a79c14b65162, "method": POST api/docs, "doc_id": 48, "ar_id": 47
+[1;32mINFO[1;0m: 2022-06-12 02:31:55,058 - "message": Document already exists, "req_uuid": 93319d3c-639b-4879-bde8-ff1cace6bb2b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:32:02,517 - "message": Inserting an entry into "analysis_results", "req_uuid": 992bbd32-a7ad-40a3-b57a-7fc0a7d0f944, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:32:02,533 - "message": Inserting an entry into "docs", "req_uuid": 992bbd32-a7ad-40a3-b57a-7fc0a7d0f944, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:32:02,539 - "message": Starting the analysis, "req_uuid": 992bbd32-a7ad-40a3-b57a-7fc0a7d0f944, "method": POST api/docs, "doc_id": 49, "ar_id": 48
+[1;32mINFO[1;0m: 2022-06-12 02:32:34,689 - "message": Inserting an entry into "analysis_results", "req_uuid": a2f68548-1fd1-497c-943d-f9bba5ef950d, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:32:34,700 - "message": Inserting an entry into "docs", "req_uuid": a2f68548-1fd1-497c-943d-f9bba5ef950d, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:32:34,707 - "message": Starting the analysis, "req_uuid": a2f68548-1fd1-497c-943d-f9bba5ef950d, "method": POST api/docs, "doc_id": 50, "ar_id": 49
+[1;32mINFO[1;0m: 2022-06-12 02:34:08,827 - "message": Inserting an entry into "analysis_results", "req_uuid": 144c986a-3695-4d19-b520-1b4f3eacc6d0, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:34:08,832 - "message": Inserting an entry into "docs", "req_uuid": 144c986a-3695-4d19-b520-1b4f3eacc6d0, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:34:08,835 - "message": Starting the analysis, "req_uuid": 144c986a-3695-4d19-b520-1b4f3eacc6d0, "method": POST api/docs, "doc_id": 51, "ar_id": 50
+[1;32mINFO[1;0m: 2022-06-12 02:34:23,880 - "message": Analysis has been finished, "req_uuid": 144c986a-3695-4d19-b520-1b4f3eacc6d0, "method": POST api/docs, "doc_id": 51, "ar_id": 50
+[1;32mINFO[1;0m: 2022-06-12 02:47:34,206 - "message": Inserting an entry into "analysis_results", "req_uuid": 23b66d9e-1018-4cda-8c90-3a381b120976, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:47:34,212 - "message": Inserting an entry into "docs", "req_uuid": 23b66d9e-1018-4cda-8c90-3a381b120976, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:50:12,243 - "message": Document already exists, "req_uuid": e9066971-d71a-4f17-a744-f4b4bfdd1491, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:51:10,225 - "message": Document already exists, "req_uuid": c82c0ae8-c2eb-4fe1-930b-335e1ad70a3b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:55:00,171 - "message": Inserting an entry into "analysis_results", "req_uuid": ba703451-f717-42ba-9f64-ec0c792f657e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:55:00,176 - "message": Inserting an entry into "docs", "req_uuid": ba703451-f717-42ba-9f64-ec0c792f657e, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:55:00,179 - "message": Starting the analysis, "req_uuid": ba703451-f717-42ba-9f64-ec0c792f657e, "method": POST api/docs, "doc_id": 53, "ar_id": 52
+[1;32mINFO[1;0m: 2022-06-12 02:55:15,223 - "message": Analysis has been finished, "req_uuid": ba703451-f717-42ba-9f64-ec0c792f657e, "method": POST api/docs, "doc_id": 53, "ar_id": 52
+[1;32mINFO[1;0m: 2022-06-12 02:55:49,075 - "message": Inserting an entry into "analysis_results", "req_uuid": fad7b09f-cfae-4655-b2d3-18ff7061ca0f, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:55:49,081 - "message": Inserting an entry into "docs", "req_uuid": fad7b09f-cfae-4655-b2d3-18ff7061ca0f, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 02:55:49,085 - "message": Starting the analysis, "req_uuid": fad7b09f-cfae-4655-b2d3-18ff7061ca0f, "method": POST api/docs, "doc_id": 54, "ar_id": 53
+[1;32mINFO[1;0m: 2022-06-12 02:56:04,145 - "message": Analysis has been finished, "req_uuid": fad7b09f-cfae-4655-b2d3-18ff7061ca0f, "method": POST api/docs, "doc_id": 54, "ar_id": 53
+[1;32mINFO[1;0m: 2022-06-12 02:57:38,094 - "message": entity_uuid is not provided for the document, "req_uuid": 4f2b1514-5012-4460-89c8-c6a657ea7a80, "method": GET api/docs/analyze-sources, "doc_id": 3
+[1;32mINFO[1;0m: 2022-06-12 02:57:49,952 - "message": Document not found, "req_uuid": 45292924-3238-4aa5-a245-baa9eb059b82, "method": GET api/docs/analyze-sources, "doc_id": 55
+[1;32mINFO[1;0m: 2022-06-12 03:03:29,115 - "message": Document already exists, "req_uuid": a8087431-1867-4c65-8f77-251c9eec9df4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:03:31,615 - "message": Inserting an entry into "analysis_results", "req_uuid": 1d764163-9cbf-4b8a-9530-d4ed717d87b4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:03:31,624 - "message": Inserting an entry into "docs", "req_uuid": 1d764163-9cbf-4b8a-9530-d4ed717d87b4, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:03:31,631 - "message": Starting the analysis, "req_uuid": 1d764163-9cbf-4b8a-9530-d4ed717d87b4, "method": POST api/docs, "doc_id": 55, "ar_id": 54
+[1;32mINFO[1;0m: 2022-06-12 03:03:46,680 - "message": Analysis has been finished, "req_uuid": 1d764163-9cbf-4b8a-9530-d4ed717d87b4, "method": POST api/docs, "doc_id": 55, "ar_id": 54
+[1;32mINFO[1;0m: 2022-06-12 03:11:44,944 - "message": Inserting an entry into "analysis_results", "req_uuid": 177bdc2e-a54a-414a-b5bf-411ac33581ce, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:11:45,021 - "message": Inserting an entry into "docs", "req_uuid": 177bdc2e-a54a-414a-b5bf-411ac33581ce, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:11:45,033 - "message": Starting the analysis, "req_uuid": 177bdc2e-a54a-414a-b5bf-411ac33581ce, "method": POST api/docs, "doc_id": 56, "ar_id": 55
+[1;32mINFO[1;0m: 2022-06-12 03:12:00,082 - "message": Analysis has been finished, "req_uuid": 177bdc2e-a54a-414a-b5bf-411ac33581ce, "method": POST api/docs, "doc_id": 56, "ar_id": 55
+[1;32mINFO[1;0m: 2022-06-12 03:14:15,128 - "message": Inserting an entry into "analysis_results", "req_uuid": c088381b-c4b4-49c6-95fa-d6cb0fd6c8f9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:14:15,141 - "message": Inserting an entry into "docs", "req_uuid": c088381b-c4b4-49c6-95fa-d6cb0fd6c8f9, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 03:14:15,151 - "message": Starting the analysis, "req_uuid": c088381b-c4b4-49c6-95fa-d6cb0fd6c8f9, "method": POST api/docs, "doc_id": 57, "ar_id": 56
+[1;32mINFO[1;0m: 2022-06-12 03:14:30,192 - "message": Analysis has been finished, "req_uuid": c088381b-c4b4-49c6-95fa-d6cb0fd6c8f9, "method": POST api/docs, "doc_id": 57, "ar_id": 56
+[1;32mINFO[1;0m: 2022-06-12 07:51:18,387 - "message": Inserting an entry into "analysis_results", "req_uuid": e3d5e0df-02b0-4f80-96f1-6b2a92641f32, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 07:51:18,398 - "message": Inserting an entry into "docs", "req_uuid": e3d5e0df-02b0-4f80-96f1-6b2a92641f32, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 07:51:18,403 - "message": Starting the analysis, "req_uuid": e3d5e0df-02b0-4f80-96f1-6b2a92641f32, "method": POST api/docs, "doc_id": 58, "ar_id": 57
+[1;32mINFO[1;0m: 2022-06-12 07:51:33,441 - "message": Analysis has been finished, "req_uuid": e3d5e0df-02b0-4f80-96f1-6b2a92641f32, "method": POST api/docs, "doc_id": 58, "ar_id": 57
+[1;32mINFO[1;0m: 2022-06-12 08:31:41,162 - "message": Document already exists, "req_uuid": 9bbea564-3a17-4bf0-ba8b-ae851dbc0ba1, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:32:26,927 - "message": Inserting an entry into "analysis_results", "req_uuid": 1da38f3c-6445-4eb4-91dd-320e6c032b8a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:32:26,939 - "message": Inserting an entry into "docs", "req_uuid": 1da38f3c-6445-4eb4-91dd-320e6c032b8a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:32:26,947 - "message": Starting the analysis, "req_uuid": 1da38f3c-6445-4eb4-91dd-320e6c032b8a, "method": POST api/docs, "doc_id": 59, "ar_id": 58
+[1;32mINFO[1;0m: 2022-06-12 08:32:41,985 - "message": Analysis has been finished, "req_uuid": 1da38f3c-6445-4eb4-91dd-320e6c032b8a, "method": POST api/docs, "doc_id": 59, "ar_id": 58
+[1;32mINFO[1;0m: 2022-06-12 08:34:37,309 - "message": Inserting an entry into "analysis_results", "req_uuid": e2301362-6ab1-4921-92be-54f39e937bc2, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:34:37,331 - "message": Inserting an entry into "docs", "req_uuid": e2301362-6ab1-4921-92be-54f39e937bc2, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:34:37,348 - "message": Starting the analysis, "req_uuid": e2301362-6ab1-4921-92be-54f39e937bc2, "method": POST api/docs, "doc_id": 60, "ar_id": 59
+[1;32mINFO[1;0m: 2022-06-12 08:34:52,389 - "message": Analysis has been finished, "req_uuid": e2301362-6ab1-4921-92be-54f39e937bc2, "method": POST api/docs, "doc_id": 60, "ar_id": 59
+[1;32mINFO[1;0m: 2022-06-12 08:35:51,691 - "message": Inserting an entry into "analysis_results", "req_uuid": 9999e54e-2e1f-4638-9f78-a80bed716962, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:35:51,711 - "message": Inserting an entry into "docs", "req_uuid": 9999e54e-2e1f-4638-9f78-a80bed716962, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 08:35:51,724 - "message": Starting the analysis, "req_uuid": 9999e54e-2e1f-4638-9f78-a80bed716962, "method": POST api/docs, "doc_id": 61, "ar_id": 60
+[1;32mINFO[1;0m: 2022-06-12 09:10:45,679 - "message": Inserting an entry into "analysis_results", "req_uuid": aa976ba7-b882-47eb-8602-d242d47ee6cd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:10:45,689 - "message": Inserting an entry into "docs", "req_uuid": aa976ba7-b882-47eb-8602-d242d47ee6cd, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:10:45,703 - "message": Starting the analysis, "req_uuid": aa976ba7-b882-47eb-8602-d242d47ee6cd, "method": POST api/docs, "doc_id": 62, "ar_id": 61
+[1;32mINFO[1;0m: 2022-06-12 09:13:10,574 - "message": Inserting an entry into "analysis_results", "req_uuid": b0ea6a10-ad76-4100-9cdb-c695b2a8d091, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:13:10,590 - "message": Inserting an entry into "docs", "req_uuid": b0ea6a10-ad76-4100-9cdb-c695b2a8d091, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:13:10,598 - "message": Starting the analysis, "req_uuid": b0ea6a10-ad76-4100-9cdb-c695b2a8d091, "method": POST api/docs, "doc_id": 63, "ar_id": 62
+[1;32mINFO[1;0m: 2022-06-12 09:13:25,641 - "message": Analysis has been finished, "req_uuid": b0ea6a10-ad76-4100-9cdb-c695b2a8d091, "method": POST api/docs, "doc_id": 63, "ar_id": 62
+[1;32mINFO[1;0m: 2022-06-12 09:32:57,763 - "message": Inserting an entry into "analysis_results", "req_uuid": 832110db-b9be-40ff-ad37-5eb522bc40a0, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:32:57,782 - "message": Inserting an entry into "docs", "req_uuid": 832110db-b9be-40ff-ad37-5eb522bc40a0, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:32:57,794 - "message": Starting the analysis, "req_uuid": 832110db-b9be-40ff-ad37-5eb522bc40a0, "method": POST api/docs, "doc_id": 64, "ar_id": 63
+[1;32mINFO[1;0m: 2022-06-12 09:42:52,229 - "message": Inserting an entry into "analysis_results", "req_uuid": 0976f5db-50dd-40cd-ac7f-5241af384c8a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:42:52,247 - "message": Inserting an entry into "docs", "req_uuid": 0976f5db-50dd-40cd-ac7f-5241af384c8a, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-12 09:42:52,260 - "message": Starting the analysis, "req_uuid": 0976f5db-50dd-40cd-ac7f-5241af384c8a, "method": POST api/docs, "doc_id": 65, "ar_id": 64
