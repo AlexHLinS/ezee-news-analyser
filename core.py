@@ -1,7 +1,5 @@
 from typing import Tuple, Mapping
-import asyncio
-from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid
-from aux_tools import TextFeatures, ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
+from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid, TextFeatures, ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
     UniqTestResults, SimilarArticleData, ArticleBaseData
 from data_science.clickbait_predictor import Clickbait_predictor
 from data_science.ner_extractor import NER_extractor
@@ -147,6 +145,7 @@ def start_analyze(article_id:int) -> None:
     # TODO: закинуть запрос по тексту на текстру и получить уид
     uid = get_antiplag_uid(text)
     # TODO: запустить дс модули и начать их результаты кидать в базу
+
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
     ap_data = get_antiplag_data_from_uid(uid)
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
@@ -154,11 +153,10 @@ def start_analyze(article_id:int) -> None:
 
 
 
-def get_fake_score(text, title, id) -> Tuple[str, Mapping[str, float]]:
+def get_fake_score(text, title) -> Tuple[str, Mapping[str, float]]:
     """
-    :param id: индитификатор новости из базы
     :param text: Текст статьи(новости)
-    :param title: Заголово новости
+    :param title: Заголовок новости
     :return: Текст статьи(новости) str и результаты анализа текста в виде: Dict ["positive": float, "negative": float, "neutral": float, "skip": float,
         "speech": float, "clickbait_score":float]
     """
@@ -186,7 +184,7 @@ def get_fake_score_from_url(url, id) -> Tuple[str, Mapping[str, float]]:
     """
     article_text = get_text_from_url(url)[5]
     article_title = get_text_from_url(url)[0]
-    return get_fake_score(article_text, article_title, id)
+    return get_fake_score(article_text, article_title)
 
 
 def get_article_text_and_title(url) -> ArticleBaseData:
@@ -194,9 +192,7 @@ def get_article_text_and_title(url) -> ArticleBaseData:
     :param url: Ссылка на текст статьи (новости)
     :return: {'article_title':заголовок статьи, 'article_text':текст статьи}
     """
-    article_text = get_text_from_url(url)[5]
-    article_title =get_text_from_url(url)[0]
-    return ArticleBaseData(url=url, title=article_title, text=article_text)
+    return get_text_from_url(url)
 
 
 def check_is_primary_source(url_list) -> Tuple[str, bool]:
