@@ -152,18 +152,20 @@ def start_analyze(article_id: int) -> None:
     # TODO: закинуть запрос по тексту на текстру и получить уид
     uid = get_antiplag_uid(text)
     # TODO: запустить дс модули и начать их результаты кидать в базу
-
+    proto_text = ''
+    proto_title = ''
+    article_text = document.text
+    article_titel = document.title
+    santiment_score = text_source_sentiment_score(article_text, article_titel, proto_text, proto_title) #TODO: Подать истенные данные первоисточника
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
     ap_data = get_antiplag_data_from_uid(uid)
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
     pass
 
-def text_source_sentiment_score(text, title, id, text_source, title_source, id_source) -> float:
+def text_source_sentiment_score(text, title, text_source, title_source) -> float: # delta_tone_vector
     """
-    :param id: индитификатор новости из базы
     :param text: Текст статьи(новости)
     :param title: Заголовок новости
-    :param id_source: индитификатор новости источника из базы
     :param text_source: Текст статьи(новости) источника
     :param title_source: Заголовок новости источника
     :return: sentiment distance - чем ближе к 0 - тем ближе тексты, чем ближе к 1 - тем дальше
