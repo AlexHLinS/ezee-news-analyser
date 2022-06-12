@@ -54,8 +54,11 @@ uvicorn main:app
 | http://localhost:8000/docs | Документация API бекенда     |
 
 #### Data Science:  
-1) Перейти в директорию data_science  
-2) Установить зависимости
+1) Для успешной установки ряда модулей потребуется компилятор С++11
+
+```bash apt-get install build-essential -y```
+2) Перейти в директорию data_science  
+3) Установить зависимости
 ```bash
 conda create --name ezee-news-analyser-ds python=3.9
 conda activate ezee-news-analyser-ds
