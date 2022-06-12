@@ -1,4 +1,7 @@
 from typing import Tuple, Mapping
+
+from scipy.spatial.distance import cosine
+
 from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid, TextFeatures, ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
     UniqTestResults, SimilarArticleData, ArticleBaseData
 from data_science.clickbait_predictor import Clickbait_predictor
@@ -151,7 +154,26 @@ def start_analyze(article_id:int) -> None:
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
     pass
 
+def text_source_sentiment_score(text, title, id, text_source, title_source, id_source) -> float:
+    """
+    :param id: индитификатор новости из базы
+    :param text: Текст статьи(новости)
+    :param title: Заголовок новости
+    :param id_source: индитификатор новости источника из базы
+    :param text_source: Текст статьи(новости) источника
+    :param title_source: Заголовок новости источника
+    :return: sentiment distance - чем ближе к 0 - тем ближе тексты, чем ближе к 1 - тем дальше
+    """
+    _, text_scores = get_fake_score(text, title, id)
+    _, source_scores = get_fake_score(text_source, title_source, id_source)
 
+    column_names = ["negative", "positive", "neutral", "skip", "speech", 'clickbait_score', 'rationality', 'intuition']
+    text_vector = [text_scores[column] for column in column_names]
+    source_vector = [source_scores[column] for column in column_names]
+
+    distance = cosine(text_vector, source_vector)
+
+    return distance
 
 def get_fake_score(text, title) -> Tuple[str, Mapping[str, float]]:
     """
