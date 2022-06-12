@@ -229,6 +229,26 @@ def check_is_primary_source(url_list) -> Tuple[str, bool]:
     """
     return ["", False]
 
+def check_percent_of_copy_from_source(text, title, id, text_source, title_source, id_source) -> float:
+    """
+    :param id: индитификатор новости из базы
+    :param text: Текст статьи(новости)
+    :param title: Заголовок новости
+    :param id_source: индитификатор новости источника из базы
+    :param text_source: Текст статьи(новости) источника
+    :param title_source: Заголовок новости источника
+    :return: similarity score - чем ближе к 0 - тем меньше одинаковых предложений, чем ближе к 1 - тем больше
+    """
+    sentences = [sentence.text for sentence in sentenize(text)]
+    num_coincidences = 0
+    for sentence in sentences:
+        if sentence in text_source:
+            num_coincidences += 1
+        else:
+            continue
+    num_coincidences = sum([1 for sentence in sentences if sentence in text_source])
+    return num_coincidences / len(sentences)
+
 def text_source_facts_comparison(text, title, id, text_source, title_source, id_source) -> Tuple[List[str], List[str]]:
     """
     :param id: индитификатор новости из базы
