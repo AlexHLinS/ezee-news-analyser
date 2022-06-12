@@ -15,7 +15,7 @@ config.read('./config.ini')
 app = FastAPI(openapi_url="/api/openapi.json")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://localhost:8080'],
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
