@@ -4,6 +4,7 @@ import pandas as pd
 from IPython.display import display
 from ipymarkup import show_span_ascii_markup as show_markup
 from razdel import sentenize
+from wiki_ru_wordnet import WikiWordnet
 from yargy import (
     Parser
 )
@@ -121,9 +122,16 @@ def show_matches(rule, *lines):
 #     for key in text_numerical_facts.keys():
 #         if key == "" or key == "год":
 #             continue
-#         if key in source_numerical_facts.keys():
+#         if len(key.split()) <= 1:
+#             res, synonims = check_if_key_or_synonims_in_list(key, source_numerical_facts.keys())
+#         else:
+#             res = True
+#             synonims = [key]
+#         if res:
 #             text_num_fact = text_numerical_facts[key]
-#             source_num_fact = source_numerical_facts[key]
+#             source_num_fact = []
+#             for synonim in synonims:
+#                 source_num_fact += source_numerical_facts[synonim]
 #             text_nums = [num_obj['number'] for num_obj in text_num_fact]
 #             source_nums = [num_obj['number'] for num_obj in source_num_fact]
 #             different_numbers = list(set(text_nums) - set(source_nums))
@@ -131,18 +139,37 @@ def show_matches(rule, *lines):
 #                 message = "\nФакты требуют подтверждения: \n"
 #                 source_message = "Факты в источнике: \n"
 #                 source_fact_texts = "\n\n".join(
-#                     [f"Факт: {fact['number']} {key}\n Текст: {fact['sentence']}" for fact in source_num_fact])
+#                     [f"Факт: {fact['number']} {synonim}\n Текст: {fact['sentence']}" for fact in
+#                      source_num_fact])
 #                 text_message = f"\n\n\nФакты в тексте: \n"
 #                 diff_facts = [find_first_number_obj_with_given_num(text_num_fact, number) for number in
 #                               different_numbers]
 #                 text_fact_texts = "\n\n".join(
-#                     [f"Факт: {fact['number']} {key}\n Текст: {fact['sentence']}" for fact in diff_facts])
+#                     [f"Факт: {fact['number']}  {key}\n Текст: {fact['sentence']}" for fact in diff_facts])
 #                 # facts_with_difference_text.append(
 #                 #     [find_first_number_obj_with_given_num(text_num_fact, number) for number in
 #                 #      different_numbers])
 #                 # facts_with_difference_source.append([fact for fact in source_num_fact])
 #                 error_messages.append(f"{message}{source_message}{source_fact_texts}{text_message}{text_fact_texts}")
 #     return error_messages
+#
+#
+# def check_if_key_or_synonims_in_list(key, list_check):
+#     if key in list_check:
+#         return True, [key]
+#     wikiwordnet = WikiWordnet()
+#     synsets = wikiwordnet.get_synsets(key)
+#     synonims = []
+#     for synset in synsets:
+#         for w in synset.get_words():
+#             synonims.append(w.lemma())
+#     if key == "место":
+#         synonims.append("строчка")
+#     intersection = list(set(synonims).intersection(set(list_check)))
+#     if len(intersection) != 0:
+#         return True, intersection
+#     else:
+#         return False, [key]
 #
 #
 # def compare_ner_facts(source_ner_facts, text_ner_facts):
@@ -240,8 +267,8 @@ def show_matches(rule, *lines):
 #     print(ind)
 #     text_init = row["initial_text"]
 #     # text_source = row["source_text"]
-#     # result = text_source_facts_comparison(text_init, None, None, text_source, None, None)
-#     result = check_percent_of_copy_from_source(text_init, None, None, text_source, None, None)
+#     result = text_source_facts_comparison(text_init, None, None, text_source, None, None)
+#     # result = check_percent_of_copy_from_source(text_init, None, None, text_source, None, None)
 #     results.append(result)
 #
 # text_source_facts_comparison(text, None, None, text_source, None, None)
