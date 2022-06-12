@@ -192,8 +192,9 @@ def get_relative_urls_and_error_indexes(uid:str, similarity_criteria:int, text:s
     result.append(errors)
     return result
 
+
 # ------------------ black lists
-# TODO: добавить функционал загрузки black lists
+
 
 # ------------------- loading data from url's
 

@@ -3,6 +3,7 @@ from typing import Tuple, Mapping, List
 
 from razdel import sentenize
 from scipy.spatial.distance import cosine
+from wiki_ru_wordnet import WikiWordnet
 
 from aux_tools import translate_text, get_text_from_url, get_antiplag_uid, get_antiplag_data_from_uid, TextFeatures, \
     ApTextTestResult, SeoCheckResult, TextKeysGroup, TextKeys, SpellCheckResult, \
@@ -151,18 +152,21 @@ def start_analyze(article_id: int) -> None:
     # TODO: проверить есть ли при наличии урл, текст и  заголовок, если текста или заголовка нет - попробовать прогрузить
     # TODO: закинуть запрос по тексту на текстру и получить уид
     uid = get_antiplag_uid(text)
+    ap_data = get_antiplag_data_from_uid(uid)
     # TODO: запустить дс модули и начать их результаты кидать в базу
     proto_text = ''
     proto_title = ''
     article_text = document.text
     article_titel = document.title
-    santiment_score = text_source_sentiment_score(article_text, article_titel, proto_text, proto_title) #TODO: Подать истенные данные первоисточника
+    santiment_score = text_source_sentiment_score(article_text, article_titel, proto_text,
+                                                  proto_title)  # TODO: Подать истенные данные первоисточника
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
-    ap_data = get_antiplag_data_from_uid(uid)
+
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
     pass
 
-def text_source_sentiment_score(text, title, text_source, title_source) -> float: # delta_tone_vector
+
+def text_source_sentiment_score(text, title, text_source, title_source) -> float:  # delta_tone_vector
     """
     :param text: Текст статьи(новости)
     :param title: Заголовок новости
@@ -170,8 +174,8 @@ def text_source_sentiment_score(text, title, text_source, title_source) -> float
     :param title_source: Заголовок новости источника
     :return: sentiment distance - чем ближе к 0 - тем ближе тексты, чем ближе к 1 - тем дальше
     """
-    _, text_scores = get_sentiment_scores(text, title, id)
-    _, source_scores = get_sentiment_scores(text_source, title_source, id_source)
+    _, text_scores = get_sentiment_scores(text, title)
+    _, source_scores = get_sentiment_scores(text_source, title_source)
 
     column_names = ["negative", "positive", "neutral", "skip", "speech", 'clickbait_score', 'rationality', 'intuition']
     text_vector = [text_scores[column] for column in column_names]
@@ -231,6 +235,7 @@ def check_is_primary_source(url_list) -> Tuple[str, bool]:
     """
     return ["", False]
 
+
 def check_percent_of_copy_from_source(text, title, id, text_source, title_source, id_source) -> float:
     """
     :param id: индитификатор новости из базы
@@ -250,6 +255,7 @@ def check_percent_of_copy_from_source(text, title, id, text_source, title_source
             continue
     num_coincidences = sum([1 for sentence in sentences if sentence in text_source])
     return num_coincidences / len(sentences)
+
 
 def text_source_facts_comparison(text, title, id, text_source, title_source, id_source) -> Tuple[List[str], List[str]]:
     """
@@ -276,9 +282,16 @@ def compare_numerical_facts(source_numerical_facts, text_numerical_facts):
     for key in text_numerical_facts.keys():
         if key == "" or key == "год":
             continue
-        if key in source_numerical_facts.keys():
+        if len(key.split()) <= 1:
+            res, synonims = check_if_key_or_synonims_in_list(key, source_numerical_facts.keys())
+        else:
+            res = True
+            synonims = [key]
+        if res:
             text_num_fact = text_numerical_facts[key]
-            source_num_fact = source_numerical_facts[key]
+            source_num_fact = []
+            for synonim in synonims:
+                source_num_fact += source_numerical_facts[synonim]
             text_nums = [num_obj['number'] for num_obj in text_num_fact]
             source_nums = [num_obj['number'] for num_obj in source_num_fact]
             different_numbers = list(set(text_nums) - set(source_nums))
@@ -286,14 +299,33 @@ def compare_numerical_facts(source_numerical_facts, text_numerical_facts):
                 message = "\nФакты требуют подтверждения: \n"
                 source_message = "Факты в источнике: \n"
                 source_fact_texts = "\n\n".join(
-                    [f"Факт: {fact['number']} {key}\n Текст: {fact['sentence']}" for fact in source_num_fact])
+                    [f"Факт: {fact['number']} {synonim}\n Текст: {fact['sentence']}" for fact in
+                     source_num_fact])
                 text_message = f"\n\n\nФакты в тексте: \n"
                 diff_facts = [find_first_number_obj_with_given_num(text_num_fact, number) for number in
                               different_numbers]
                 text_fact_texts = "\n\n".join(
-                    [f"Факт: {fact['number']} {key}\n Текст: {fact['sentence']}" for fact in diff_facts])
+                    [f"Факт: {fact['number']}  {key}\n Текст: {fact['sentence']}" for fact in diff_facts])
                 error_messages.append(f"{message}{source_message}{source_fact_texts}{text_message}{text_fact_texts}")
     return error_messages
+
+
+def check_if_key_or_synonims_in_list(key, list_check):
+    if key in list_check:
+        return True, [key]
+    wikiwordnet = WikiWordnet()
+    synsets = wikiwordnet.get_synsets(key)
+    synonims = []
+    for synset in synsets:
+        for w in synset.get_words():
+            synonims.append(w.lemma())
+    if key == "место":
+        synonims.append("строчка")
+    intersection = list(set(synonims).intersection(set(list_check)))
+    if len(intersection) != 0:
+        return True, intersection
+    else:
+        return False, [key]
 
 
 def compare_ner_facts(source_ner_facts, text_ner_facts):
@@ -330,13 +362,15 @@ def compare_ner_facts(source_ner_facts, text_ner_facts):
                     diff_facts = [fact for fact in text_ner_fact if
                                   fact["Normal spans"] in different_values and fact["Normal spans"] != "covid-19"]
                     text_fact_texts = "\n\n".join(
-                        [f"Факт: {fact['Normal spans']} {ner_types[key]}\n Текст: {fact['sentence']}" for fact in diff_facts])
+                        [f"Факт: {fact['Normal spans']} {ner_types[key]}\n Текст: {fact['sentence']}" for fact in
+                         diff_facts])
                     error_messages.append(f"{message}{text_fact_texts}")
         else:
             message = f"\nВ тексте появился тип сущностей {ner_types[key]}, не представленный в источнике: \n"
 
             text_fact_texts = "\n\n".join(
-                [f"Факт: {fact['Normal spans']} {ner_types[key]}\n Текст: {fact['sentence']}" for fact in text_ner_facts[key]])
+                [f"Факт: {fact['Normal spans']} {ner_types[key]}\n Текст: {fact['sentence']}" for fact in
+                 text_ner_facts[key]])
             error_messages.append(f"{message}{text_fact_texts}")
     return error_messages
 

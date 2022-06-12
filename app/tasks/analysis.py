@@ -59,3 +59,5 @@ def analyze_document(document: Document, logger=default_logger) -> None:
     logger.info('Analysis has been finished', doc_id=document.id, ar_id=document.ar_id)
 
     return None
+
+
