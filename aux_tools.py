@@ -5,6 +5,7 @@ from razdel import sentenize
 from translate import Translator
 from time import sleep
 from newspaper import Article, ArticleException
+import razdel
 
 from htmldate import find_date
 
@@ -168,7 +169,7 @@ def get_relative_urls(uid:str, similarity_criteria:int):
     :param similarity_criteria:  процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
     :return: [{'url': 'https://адрес сайта', 'plagiat': '100', 'words': ['номера позиций "совпадающих" слов в тексте']}, ...]
     """
-    result_json = get_antiplag_data_from_uid(test_uid)['result_json']
+    result_json = get_antiplag_data_from_uid(uid)['result_json']
     urls = json.loads(result_json)['urls']
     result = list()
     for url in urls:
@@ -184,7 +185,7 @@ def get_relative_urls_and_error_indexes(uid:str, similarity_criteria:int, text:s
     :return: [[{'url': 'https://адрес сайта', 'plagiat': '100', 'words': ['номера позиций "совпадающих" слов в тексте']}, ...], ['номера позиций слов с ошибками в тексте']]
 
     """
-    urls = get_relative_urls(test_uid,similarity_criteria)
+    urls = get_relative_urls(uid,similarity_criteria)
     errors = get_errors_words(uid, text)
     result = list()
     result.append(urls)
