@@ -1,0 +1,7 @@
+[DB]
+SQLALCHEMY_DATABASE_URL=sqlite:///./database/backend.db
+
+[LOGGING]
+FORMAT=%(levelname)s: %(asctime)s - %(message)s
+LEVEL=INFO
+LOG_FILE=log/app.log

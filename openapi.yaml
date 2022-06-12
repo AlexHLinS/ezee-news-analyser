@@ -1,0 +1,349 @@
+openapi: 3.0.2
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  /api/docs/{doc_id}:
+    get:
+      tags:
+        - api
+      summary: Получить Документ
+      description: Делает запрос в БД на получение документа по id
+      operationId: __________________api_docs__doc_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Doc Id
+            type: integer
+          name: doc_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PyDocument'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/docs/:
+    post:
+      tags:
+        - api
+      summary: Отправить Документ На Анализ
+      description: |-
+        Создаёт новый документ в БД и отправляет его на анализ
+
+        - **new_doc**: Новый документ для анализа
+      operationId: _____________________________api_docs__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PyNewDocument'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PyDocument'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/docs/{doc_id}/analyze-sources:
+    get:
+      tags:
+        - api
+      summary: Провести Анализ Источников Документа
+      description: Проводит анализ источников, которые публиковали документ и ему подобные
+      operationId: _____________________________________api_docs__doc_id__analyze_sources_get
+      parameters:
+        - required: true
+          schema:
+            title: Doc Id
+            type: integer
+          name: doc_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PySourcesAnalysisResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/analysis-results/{ar_id}:
+    get:
+      tags:
+        - api
+      summary: Получить Результат Анализа
+      description: Делает запрос в БД на получение результата анализа по id
+      operationId: ___________________________api_analysis_results__ar_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Ar Id
+            type: integer
+          name: ar_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PyAnalysisResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/sources/{source_id}:
+    get:
+      tags:
+        - api
+      summary: Получить Источник
+      description: Делает запрос в БД на получение источника по id
+      operationId: __________________api_sources__source_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Source Id
+            type: integer
+          name: source_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PySource'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PyAnalysisResult:
+      title: PyAnalysisResult
+      required:
+        - id
+        - date_added
+        - date_updated
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        date_added:
+          title: Date Added
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        is_primary_source:
+          title: Is Primary Source
+          type: boolean
+        date_delta:
+          title: Date Delta
+          type: integer
+        difference:
+          title: Difference
+          type: number
+        difference_sum:
+          title: Difference Sum
+          type: number
+        delta_tone_vector:
+          title: Delta Tone Vector
+          type: number
+        crossed_words:
+          title: Crossed Words
+          type: string
+        diagram_1:
+          title: Diagram 1
+          type: string
+        is_real_publication_date:
+          title: Is Real Publication Date
+          type: boolean
+        is_publication_date_difference:
+          title: Is Publication Date Difference
+          type: boolean
+        is_author_shown:
+          title: Is Author Shown
+          type: boolean
+        real_references:
+          title: Real References
+          type: string
+        is_organisation_real:
+          title: Is Organisation Real
+          type: boolean
+        author_rate:
+          title: Author Rate
+          type: number
+        mistakes_count:
+          title: Mistakes Count
+          type: integer
+        spam_index:
+          title: Spam Index
+          type: number
+        water_index:
+          title: Water Index
+          type: number
+        is_directional_pronouns_used:
+          title: Is Directional Pronouns Used
+          type: boolean
+        is_direct_appear:
+          title: Is Direct Appear
+          type: boolean
+        is_any_links:
+          title: Is Any Links
+          type: boolean
+    PyDocument:
+      title: PyDocument
+      required:
+        - id
+        - date_added
+        - date_updated
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        title:
+          title: Title
+          type: string
+        text:
+          title: Text
+          type: string
+        s_id:
+          title: S Id
+          type: integer
+        ar_id:
+          title: Ar Id
+          type: integer
+        entity_uuid:
+          title: Entity Uuid
+          type: string
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+        date_added:
+          title: Date Added
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+    PyNewDocument:
+      title: PyNewDocument
+      type: object
+      properties:
+        url:
+          title: Url
+          maxLength: 65536
+          minLength: 1
+          type: string
+          format: uri
+        title:
+          title: Title
+          type: string
+        text:
+          title: Text
+          type: string
+    PySource:
+      title: PySource
+      required:
+        - id
+        - date_added
+        - date_updated
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        score:
+          title: Score
+          type: number
+        date_added:
+          title: Date Added
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+    PySourcesAnalysisResult:
+      title: PySourcesAnalysisResult
+      required:
+        - sources
+      type: object
+      properties:
+        sources:
+          title: Sources
+          type: array
+          items:
+            $ref: '#/components/schemas/PySource'
+        good_media_percentage:
+          title: Good Media Percentage
+          type: number
+        media_avg_score:
+          title: Media Avg Score
+          type: number
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
