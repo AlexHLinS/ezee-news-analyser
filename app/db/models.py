@@ -42,27 +42,35 @@ class AnalysisResult(Base):
     __tablename__ = "analysis_results"
 
     id = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
-    date_added = Column(DATETIME, default=datetime.now)
-    date_updated = Column(DATETIME, default=datetime.now)
-    is_primary_source = Column(Boolean)
-    date_delta = Column(Integer)
-    difference = Column(Float)
-    difference_sum = Column(Float)
-    delta_tone_vector = Column(Float)
-    crossed_words = Column(String)
-    diagram_1 = Column(String)
-    is_real_publication_date = Column(Boolean)
-    is_publication_date_difference = Column(Boolean)
-    is_author_shown = Column(Boolean)
-    real_references = Column(String)
-    is_organisation_real = Column(Boolean)
-    author_rate = Column(Float)
-    mistakes_count = Column(Integer)
+    # Block 1
+    primary_source_url = Column(String)
+    created_at = Column(DATETIME)
+    text = Column(String)
+    source_score = Column(Float)
+    times_published = Column(Integer)
+    percentage_blacklist = Column(Float)
+    source_text = Column(String)
+    avg_sources_score = Column(Float)
+    reliable_sources_flag = Column(Boolean)
+    # Block 2
+    diagram_data = Column(String)
+    # Block 3
+    plagiary_percentage = Column(Float)
+    is_any_sentiment_delta = Column(Boolean)
+    facts = Column(String)
+    # Block 4
+    grammatic_errors_count = Column(Integer)
     spam_index = Column(Float)
     water_index = Column(Float)
-    is_directional_pronouns_used = Column(Boolean)
-    is_direct_appear = Column(Boolean)
-    is_any_links = Column(Boolean)
+    sentiment_index = Column(Float)
+    speech_index = Column(Float)
+    intuition_index = Column(Float)
+    clickbait_index = Column(Float)
+    rationality_index = Column(Float)
+    fake_index = Column(Float)
+
+    date_added = Column(DATETIME, default=datetime.now)
+    date_updated = Column(DATETIME, default=datetime.now)
 
 
 class BlacklistedSource(Base):

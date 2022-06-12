@@ -2,6 +2,8 @@ from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from json import loads
+
 
 from app import ROOT_LOGGER
 from app.logging import CustomLoggerAdapter
@@ -15,7 +17,7 @@ router = APIRouter(
 
 
 @router.get("/{ar_id}", name='Получить результат анализа', response_model=PyAnalysisResult)
-async def get_analysis_result(ar_id: int, db: Session = Depends(get_db)) -> AnalysisResult:
+async def get_analysis_result(ar_id: int, db: Session = Depends(get_db)) -> PyAnalysisResult:
     """
     Делает запрос в БД на получение результата анализа по id
     """

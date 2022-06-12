@@ -75,29 +75,41 @@ class PySourcesAnalysisResult(BaseModel):
         orm_mode = True
 
 
+class DiagramData(BaseModel):
+    date: Union[str, None]
+    is_valid: Union[bool, None]
+
+
 class PyAnalysisResult(BaseModel):
     id: int
-    date_added: datetime
-    date_updated: datetime
-    is_primary_source: Union[bool, None]
-    date_delta: Union[int, None]
-    difference: Union[float, None]
-    difference_sum: Union[float, None]
-    delta_tone_vector: Union[float, None]
-    crossed_words: Union[str, None]
-    diagram_1: Union[str, None]
-    is_real_publication_date: Union[bool, None]
-    is_publication_date_difference: Union[bool, None]
-    is_author_shown: Union[bool, None]
-    real_references: Union[str, None]
-    is_organisation_real: Union[bool, None]
-    author_rate: Union[float, None]
-    mistakes_count: Union[int, None]
+    # Block 1
+    primary_source_url: Union[str, None]
+    created_at: Union[datetime, None]
+    text: Union[str, None]
+    source_score: Union[float, None]
+    times_published: Union[int, None]
+    percentage_blacklist: Union[float, None]
+    source_text: Union[str, None]
+    avg_sources_score: Union[float, None]
+    reliable_sources_flag: Union[bool, None]
+    # Bloack 2
+    diagram_data: Union[str, None]
+    #
+    plagiary_percentage: Union[str, None]
+    is_any_sentiment_delta: Union[bool, None]
+    facts: Union[str, None]
+    #
+    grammatic_errors_count: Union[int, None]
     spam_index: Union[float, None]
     water_index: Union[float, None]
-    is_directional_pronouns_used: Union[bool, None]
-    is_direct_appear: Union[bool, None]
-    is_any_links: Union[bool, None]
+    sentiment_index: Union[float, None]
+    speech_index: Union[float, None]
+    intuition_index: Union[float, None]
+    clickbait_index: Union[float, None]
+    rationality_index: Union[float, None]
+    fake_index: Union[float, None]
+    date_added: datetime
+    date_updated: datetime
 
     class Config:
         orm_mode = True
