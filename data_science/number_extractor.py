@@ -1,6 +1,6 @@
 from natasha import MorphVocab
 
-from number import NUMBER
+from data_science.number import NUMBER
 from natasha.extractors import Extractor
 from yargy.parser import Match
 

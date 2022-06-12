@@ -189,7 +189,13 @@ THOUSAND = or_(
 ).interpretation(const(10 ** 3))
 MILLION = or_(
     rule(caseless('млн'), DOT.optional()),
-    rule(normalized('миллион'))
+    rule(normalized('миллион')),
+    rule(normalized('миллиона')),
+    rule(normalized('миллиону')),
+    rule(normalized('миллионов')),
+    rule(normalized('миллионами')),
+    rule(normalized('миллионах')),
+    rule(normalized('миллионам'))
 ).interpretation(const(10 ** 6))
 MILLIARD = or_(
     rule(caseless('млрд'), DOT.optional()),
