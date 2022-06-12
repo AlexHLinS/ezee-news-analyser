@@ -8,6 +8,73 @@ from newspaper import Article, ArticleException
 
 from htmldate import find_date
 
+#### Structures
+
+class ArticleBaseData(NamedTuple):
+    url: str
+    title: str
+    text: str
+
+
+class SimilarArticleData(NamedTuple):
+    url: str
+    similarity_score: float
+    similar_words_list: Tuple[str]
+
+
+class UniqTestResults(NamedTuple):
+    date_check: str
+    unique_score: float
+    cleared_text: str
+    similar_articles: Tuple[SimilarArticleData]
+
+
+class SpellCheckResult(NamedTuple):
+    error_type: str
+    reason: str
+    not_correct_text: str
+    correct_replacements: Tuple[str]
+    error_segment_start_position: int
+    error_segment_end_position: int
+
+
+class TextKeys(NamedTuple):
+    key_title = str
+    count = int
+
+
+class TextKeysGroup(NamedTuple):
+    key_title = str
+    count = int
+    sub_keys = Tuple[TextKeys]
+
+
+class SeoCheckResult(NamedTuple):
+    count_chars_with_space: int
+    count_chars_without_space: int
+    count_words: int
+    water_percent: float
+    spam_percent: float
+    mixed_words_positions: int
+    list_keys: Tuple[TextKeys]
+    list_keys_group: Tuple[TextKeysGroup]
+
+
+class ApTextTestResult(NamedTuple):
+    uid: str
+    text_unique: float
+    uniq_results: UniqTestResults
+    spell_results: Tuple[SpellCheckResult]
+    seo_results: SeoCheckResult
+
+
+class TextFeatures(NamedTuple):
+    mistakes_count: int
+    spam_index: float
+    water_index: float
+    is_directional_pronouns_used: bool
+    is_direct_appear: bool
+    is_any_links: bool
 
 # ------------------ translator
 
@@ -89,10 +156,6 @@ def get_antiplag_data_from_uid(uid):
 # TODO: добавить функционал загрузки black lists
 
 # ------------------- loading data from url's
-class ArticleBaseData(NamedTuple):
-    url: str
-    title: str
-    text: str
 
 def get_text_from_url(url) -> ArticleBaseData:
     """
@@ -111,70 +174,4 @@ def get_text_from_url(url) -> ArticleBaseData:
     return ArticleBaseData(url=url, title=article_title, text=article_text)
 
 
-#### Structures
 
-class ArticleBaseData(NamedTuple):
-    url: str
-    title: str
-    text: str
-
-
-class SimilarArticleData(NamedTuple):
-    url: str
-    similarity_score: float
-    similar_words_list: Tuple[str]
-
-
-class UniqTestResults(NamedTuple):
-    date_check: str
-    unique_score: float
-    cleared_text: str
-    similar_articles: Tuple[SimilarArticleData]
-
-
-class SpellCheckResult(NamedTuple):
-    error_type: str
-    reason: str
-    not_correct_text: str
-    correct_replacements: Tuple[str]
-    error_segment_start_position: int
-    error_segment_end_position: int
-
-
-class TextKeys(NamedTuple):
-    key_title = str
-    count = int
-
-
-class TextKeysGroup(NamedTuple):
-    key_title = str
-    count = int
-    sub_keys = Tuple[TextKeys]
-
-
-class SeoCheckResult(NamedTuple):
-    count_chars_with_space: int
-    count_chars_without_space: int
-    count_words: int
-    water_percent: float
-    spam_percent: float
-    mixed_words_positions: int
-    list_keys: Tuple[TextKeys]
-    list_keys_group: Tuple[TextKeysGroup]
-
-
-class ApTextTestResult(NamedTuple):
-    uid: str
-    text_unique: float
-    uniq_results: UniqTestResults
-    spell_results: Tuple[SpellCheckResult]
-    seo_results: SeoCheckResult
-
-
-class TextFeatures(NamedTuple):
-    mistakes_count: int
-    spam_index: float
-    water_index: float
-    is_directional_pronouns_used: bool
-    is_direct_appear: bool
-    is_any_links: bool

@@ -47,8 +47,7 @@ from app.db.crud import update_entry_by_id
 # is_direct_appear                  -   использованы ли прямые обращения к читателю
 # is_any_links                      -   есть ли ссылки на сторонние сайты
 
-
-class AnalyzedArticle(object):
+'''class AnalyzedArticle(object):
 
     async def get_semilarity_data(self):
         self.similarity_data = ApTextTestResult
@@ -130,11 +129,20 @@ class AnalyzedArticle(object):
         self.is_direct_appear = None  # -   использованы ли прямые обращения к читателю
         self.is_any_links = None  #
         asyncio.run(self.start_data_gethering())
-
+'''
 
 ######
-def start_analyze(id:int, text:str, title:str, url:str):
-   # TODO: если урл - NONE - работаем с текстом и тайтлом в противном случае грузим текст и тайтл и отдаем в их базу запускаем модули по анализу
+def start_analyze(id:int) -> None:
+    """
+    :param id: индитификатор анализируемой новости в базе данных
+    :return: None
+    """
+    # TODO: получить документ
+    # TODO: проверить есть ли при наличии урл, текст и  заголовок, если текста или заголовка нет - попробовать прогрузить
+    # TODO: закинуть запрос по тексту на текстру и получить уид
+    # TODO: запустить дс модули и начать их результаты кидать в базу
+    # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
+    # TODO: остальные действия которым необходимы урлы и прочее с текстру
     pass
 
 
