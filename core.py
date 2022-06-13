@@ -174,7 +174,8 @@ def start_analyze(article_id: int) -> None:
     distance_score = None
 
     # float скор ошибок фактов-чисел, float скор ошибок фактов-сущностей, str сообщение с выявлением ошибок фактов
-    error_numerical_facts_score, error_ner_facts_score, facts_message = text_source_facts_comparison(article_text, proto_text)
+    error_numerical_facts_score, error_ner_facts_score, facts_message = text_source_facts_comparison(article_text,
+                                                                                                     proto_text)
 
     message_to_frontend = f"Семантическое ядро новости:\n\n" \
                           f"{semantic_core}\n\n\n" \
@@ -182,7 +183,88 @@ def start_analyze(article_id: int) -> None:
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
 
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
+
+    # TODO Финальный скор на фронт
+    final_score = 0#calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
+                               #error_ner_facts_score, grammaticErrorsCount, waterIndex, speechIndex, intuitionIndex)
     pass
+
+
+def calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
+                               error_ner_facts_score, grammaticErrorsCount, waterIndex, speechIndex, intuitionIndex):
+    if timePublished < 10:
+        timePublished_coeff = 0.7
+    elif 10 <= timePublished < 20:
+        timePublished_coeff = 0.95
+    elif timePublished >= 20:
+        timePublished_coeff = 0
+
+    if percentageBlackList < 20:
+        percentageBlackList_coeff = 1
+    elif 20 <= percentageBlackList < 50:
+        percentageBlackList_coeff = 0.95
+    elif percentageBlackList >= 50:
+        percentageBlackList_coeff = 0.8
+
+    if avgSourceScore < 0.3:
+        avgSourceScore_coeff = 0.7
+    elif 0.3 <= avgSourceScore < 0.7:
+        avgSourceScore_coeff = 0.95
+    elif avgSourceScore >= 0.7:
+        avgSourceScore_coeff = 1
+
+    if error_numerical_facts_score == 0:
+        error_numerical_facts_score_coeff = 0
+    elif error_numerical_facts_score == 1:
+        error_numerical_facts_score_coeff = 0.6
+    elif error_numerical_facts_score == 2:
+        error_numerical_facts_score_coeff = 0.55
+    elif error_numerical_facts_score >= 3:
+        error_numerical_facts_score_coeff = 0.5
+
+    if error_ner_facts_score == 0:
+        error_ner_facts_score_coeff = 0
+    elif error_ner_facts_score == 1:
+        error_ner_facts_score_coeff = 0.8
+    elif error_ner_facts_score == 2:
+        error_ner_facts_score_coeff = 0.7
+    elif error_ner_facts_score >= 3:
+        error_ner_facts_score_coeff = 0.6
+
+    if grammaticErrorsCount < 4:
+        grammaticErrorsCount_coeff = 1
+    elif 4 <= grammaticErrorsCount < 7:
+        grammaticErrorsCount_coeff = 0.9
+    elif grammaticErrorsCount >= 7:
+        grammaticErrorsCount_coeff = 0.8
+
+    if waterIndex < 30:
+        waterIndex_coeff = 1
+    elif 30 <= waterIndex < 40:
+        waterIndex_coeff = 0.95
+    elif waterIndex >= 40:
+        waterIndex_coeff = 0.9
+
+    if speechIndex < 0.02:
+        speechIndex_coeff = 1
+    elif 0.02 <= speechIndex < 0.1:
+        speechIndex_coeff = 0.9
+    elif speechIndex >= 0.1:
+        speechIndex_coeff = 0.8
+
+    if intuitionIndex < 0.5:
+        intuitionIndex_coeff = 1
+    elif intuitionIndex >= 0.5:
+        intuitionIndex_coeff = 0.9
+
+    raw_score = timePublished_coeff * percentageBlackList_coeff * avgSourceScore_coeff * \
+                error_numerical_facts_score_coeff * error_ner_facts_score_coeff * grammaticErrorsCount_coeff * \
+                waterIndex_coeff * speechIndex_coeff * \
+                intuitionIndex_coeff
+
+    normalized_score = 100*raw_score
+
+    return 100*raw_score
 
 
 def text_source_sentiment_score(text, title, text_source, title_source) -> float:  # delta_tone_vector
@@ -298,12 +380,12 @@ def text_source_facts_comparison(text, text_source) -> Tuple[float, float, str]:
     ner_error_messages = compare_ner_facts(source_ner_facts, text_ner_facts)
 
     if len(text_numerical_facts) != 0:
-        error_numerical_facts_score = len(numerical_error_messages) / len(text_numerical_facts)
+        error_numerical_facts_score = len(numerical_error_messages)  # / len(text_numerical_facts)
     else:
         error_numerical_facts_score = 1
 
     if len(text_ner_facts) != 0:
-        error_ner_facts_score = len(ner_error_messages) / len(text_ner_facts)
+        error_ner_facts_score = len(ner_error_messages)  # / len(text_ner_facts)
     else:
         error_ner_facts_score = 1
 
