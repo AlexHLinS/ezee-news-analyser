@@ -244,6 +244,15 @@ def get_urls_dates(urls):
         result.append(url)
     return result
 
+def get_earlest_url(urls):
+    """
+    :param urls: [{'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}, ... ]
+    :return: по саммому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
+    """
+    df = pd.DataFrame(urls)
+    return  df.sort_values(by='date').to_dict('records')[0]
+
+
 # ------------------ black lists
 
 
