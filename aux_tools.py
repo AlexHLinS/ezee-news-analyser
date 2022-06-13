@@ -295,6 +295,14 @@ def get_grammatical_error_count(uid: str) -> int:  # TODO: подключить 
     count = len(json.loads(ap_all['spell_check']))
     return count
 
+def get_spam_percent(uid:str) -> int:
+    """
+    :param uid: UID результатов анализа на text.ru
+    :return: метрика spam_percent %
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    count = json.loads(ap_all['seo_check'])['spam_percent']
+    return count
 
 def get_plagiary_percentage(uid: str, unique: bool):  # TODO: подключить к plagiary_percentage
     """
