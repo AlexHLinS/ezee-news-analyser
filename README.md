@@ -1,11 +1,14 @@
 # Приложение для проверки фейковых новостей
+Сервис доступен здесь: [http://84.252.137.43/](http://84.252.137.43)
+
+![](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2F84.252.137.43&qzone=1&margin=0&size=400x400&ecc=L)
 
 Используемые технологии
 
 - Frontend: React
 - Backend: FastAPI
-- Data Science: <code>in progress...</code>
-- Data Base:  
+- Data Science: NLP
+- Data Base: SQL
 
 ### Структура репозитория:
 - Frontend: исходные файлы клиентской части
@@ -30,19 +33,18 @@
 2) Установить зависимости
 ```bash
 python -m venv venv
-venv/Scripts/Activate - для Win
-source /venv/bin/Activate - для Nix 
+source /venv/bin/Activate
 pip install -r requirements.txt
 ```  
 3) Запустить проект в режиме разработки:  
 ```bash
-uvicorn main:app
+python3 api_server.py
 ```
 Будут доступны следующие страницы приложения:
 
 | Адрес                      | Содержание:                  |
 |----------------------------|------------------------------|
-| http://localhost:3000      | Основная страница приложения |        
+| http://localhost:80        | Основная страница приложения |        
 | http://localhost:8000/docs | Документация API бекенда     |
 
 #### Data Science:  
@@ -69,7 +71,7 @@ pip install openpyxl
 pip install wiki-ru-wordnet
 ```      
 # Data Science Модуль Описание 
-Подробное описание с примерами оиспользования можно посмотреть [здесь](./data_science/usage_example.ipynb) 
+Подробное описание с примерами использования можно посмотреть [здесь](./data_science/usage_example.ipynb) 
 
 ## Скор фейковости новости
 
