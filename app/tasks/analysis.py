@@ -2,18 +2,17 @@ import requests
 import htmldate
 import date_guesser
 
-from datetime import timedelta
+from datetime import timedelta, datetime
 from time import sleep
 from urllib.parse import urlparse
 from json import dumps
-from datetime import datetime
-
+from traceback import format_exc
 
 from app.db.crud import *
 from app.db.models import *
 from app.helpers import default_logger
-from core import get_article_text_and_title, start_analyze
-from aux_tools import get_relative_urls, get_antiplag_uid, get_plagiary_percentage, get_grammatical_error_count
+from core import get_article_text_and_title, start_analyze, calculate_final_fake_score
+from aux_tools import get_relative_urls, get_antiplag_uid, get_grammatical_error_count, get_spam_percent, get_plagiary_percentage
 
 
 def get_urls_with_dates(urls: List[str]):
@@ -49,76 +48,13 @@ def get_url_date_created(url):
     return None
 
 
-def analyze_document_useless(document: Document, logger=default_logger) -> None:
-    """
-    Таска на анализ документа. Предполагается, что должна запускаться через N секунд после инициализации проверки
-    на антиплагиате
-
-    Args:
-        document: документ, который будет анализироваться
-        ap_uuid: уникальный идентификатор, по которому можно получить результаты анализа с антиплагиата
-        logger (optional): логгер для отслеживания процесса анализа
-    """
-
-    logger.info('Starting the analysis', doc_id=document.id, ar_id=document.ar_id)
-
-    # TODO: Пока просто для примера. Вместо этого подставить реальный анализ
-    from time import sleep
-    from random import randint
-
-    # Block1
-    sleep(5)
-    update_entry_by_id(document.ar_id, AnalysisResult(primary_source_url=True,
-                                                      created_at=datetime.now(),
-                                                      text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                                                      source_score=0.5,
-                                                      times_published=228,
-                                                      percentage_blacklist=10.98,
-                                                      source_text='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-                                                      avg_sources_score=3.2,
-                                                      reliable_sources_flag=True,
-                                                      date_updated=datetime.now()))
-
-    # Block2
-    sleep(4)
-    update_entry_by_id(document.ar_id, AnalysisResult(
-        diagram_data=dumps(
-            [{"date": datetime.now().replace(day=randint(1, 29)).strftime('%m/%d/%Y'), "is_valid": bool(randint(0, 1))}
-             for i in range(228)]),
-        date_updated=datetime.now()))
-    # Block3
-    sleep(3)
-    update_entry_by_id(document.ar_id, AnalysisResult(plagiary_percentage=0.3,
-                                                      is_any_sentiment_delta=True,
-                                                      facts="Факты, факты, факты",
-                                                      date_updated=datetime.now()))
-    # Block4
-    sleep(2)
-    update_entry_by_id(document.ar_id, AnalysisResult(grammatic_errors_count=123,
-                                                      spam_index=0.123,
-                                                      water_index=0.56,
-                                                      sentiment_index=0.98,
-                                                      speech_index=0.12,
-                                                      intuition_index=0.65,
-                                                      clickbait_index=0.87,
-                                                      rationality_index=0.54,
-                                                      fake_index=0.78,
-                                                      date_updated=datetime.now()))
-
-    logger.info('Analysis has been finished', doc_id=document.id, ar_id=document.ar_id)
-
-    return None
-
-
 def analyze_document(document: Document, logger=default_logger):
     """
-    Считаем times_published
-    Заносим все остальные документы в базу (тот, что отправлен на анализ - должен иметь ar_id)
-    По возможности вытягиваем для них текст и заголовок
-    Считаем percentage_blacklist
-    Считаем reliable_sources_flag
-    Считаем diagram_data
-    Считаем plagiary_percentage
+    Осуществляет анализ документа
+
+    Args:
+        document: документ, по которому проводится анализ
+        logger: логгер
     """
 
     logger.info('Starting the analysis')
@@ -149,11 +85,34 @@ def analyze_document(document: Document, logger=default_logger):
 
     # определяем grammatic_errors_count
     try:
-        count = get_grammatical_error_count(ap_uuid)
+        grammatic_errors_count = get_grammatical_error_count(ap_uuid)
     except Exception as e:
-        logger.warning('Exception raised during "grammatical_error_count"', exc=repr(e))
-        count = None
-    update_entry_by_id(document.ar_id, AnalysisResult(grammatical_error_count=count))
+        logger.warning('Exception raised during "grammatical_errors_count"', exc=repr(e))
+        grammatic_errors_count = None
+    update_entry_by_id(document.ar_id, AnalysisResult(grammatic_errors_count=grammatic_errors_count))
+
+    # определяем spam_index
+    try:
+        spam_index = get_spam_percent(ap_uuid)
+    except Exception as e:
+        logger.warning('Exception raised during "spam_index"', exc=repr(e))
+        spam_index = None
+    update_entry_by_id(document.ar_id, AnalysisResult(spam_index=spam_index))
+
+    # определяем get_water_from
+    try:
+        spam_index = get_spam_percent(ap_uuid)
+    except Exception as e:
+        logger.warning('Exception raised during "spam_index"', exc=repr(e))
+        spam_index = None
+    update_entry_by_id(document.ar_id, AnalysisResult(spam_index=spam_index))
+
+    try:
+        grammatic_errors_count = get_grammatical_error_count(ap_uuid)
+    except Exception as e:
+        logger.warning('Exception raised during "grammatical_errors_count"', exc=repr(e))
+        grammatic_errors_count = None
+    update_entry_by_id(document.ar_id, AnalysisResult(grammatic_errors_count=grammatic_errors_count))
 
     # определяем plagiat_percentage
     try:
@@ -220,8 +179,15 @@ def analyze_document(document: Document, logger=default_logger):
     if primary_source_text and primary_source_title and document.text:
         try:
             some_metrics = start_analyze(document.id, primary_source_text, primary_source_title)
+            water_index = some_metrics.get("water_index", 1)
+            sentiment_index = some_metrics.get("sentiment_index", 0)
+            facts = some_metrics.get("facts")
+            error_numerical_facts_score = some_metrics.get("error_numerical_facts_score", 0)
+            error_ner_facts_score = some_metrics.get("error_ner_facts_score", 0)
+            intuition_score = some_metrics.get("intuition_score", 0)
+            speech_index = some_metrics.get("speech_index", 0)
         except Exception as e:
-            logger.warning("Exception raised during 'start_analyze'", exc=repr(e))
+            logger.warning("Exception raised during 'start_analyze'", exc=repr(e), traceback=format_exc())
 
     update_entry_by_id(document.ar_id, AnalysisResult(sentiment_index=some_metrics.get('sentiment_index'),
                                                       facts=some_metrics.get('facts')))
@@ -231,11 +197,21 @@ def analyze_document(document: Document, logger=default_logger):
         blacklisted = db.query(BlacklistedSource
                                ).filter(BlacklistedSource.url in [ns.url for ns in new_sources]
                                         ).all()
-        percentage_blacklist = len(blacklisted) / len(new_sources)
+        percentage_blacklist = len(blacklisted) / len(new_sources) * 100
     else:
-        percentage_blacklist = None
-
+        percentage_blacklist = 0
     update_entry_by_id(document.ar_id, AnalysisResult(percentage_blacklist=percentage_blacklist))
+
+    fake_index = calculate_final_fake_score(timePublished=len(urls),
+                                            percentageBlackList=percentage_blacklist,
+                                            avgSourceScore=0.5,
+                                            error_numerical_facts_score=error_numerical_facts_score,
+                                            error_ner_facts_score=error_ner_facts_score,
+                                            grammaticErrorsCount=grammatic_errors_count,
+                                            waterIndex=water_index,
+                                            speechIndex=speech_index,
+                                            intuitionIndex=intuition_score)
+    update_entry_by_id(document.ar_id, AnalysisResult(fake_index=fake_index))
     logger.info('Analysis has been finished')
     return
 

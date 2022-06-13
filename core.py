@@ -154,8 +154,6 @@ def start_analyze(article_id: int, proto_text: str, proto_title: str) -> dict:
     uid = get_antiplag_uid(text)
     ap_data = get_antiplag_data_from_uid(uid)
     # TODO: запустить дс модули и начать их результаты кидать в базу
-    proto_text = ''
-    proto_title = ''
     article_text = document.text
     article_title = document.title
 
@@ -187,7 +185,12 @@ def start_analyze(article_id: int, proto_text: str, proto_title: str) -> dict:
     # TODO Финальный скор на фронт
     final_score = 0#calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
                                #error_ner_facts_score, grammaticErrorsCount, waterIndex, speechIndex, intuitionIndex)
-    pass
+    return {'sentiment_index': sentiment_score,
+            'facts': message_to_frontend,
+            'error_numerical_facts_score': error_numerical_facts_score,
+            'error_ner_facts_score': error_ner_facts_score,
+            'intuition_score': intuition_score,
+            'speech_index': speech_score}
 
 
 def calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
@@ -205,6 +208,7 @@ def calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScor
         percentageBlackList_coeff = 0.95
     elif percentageBlackList >= 50:
         percentageBlackList_coeff = 0.8
+    percentageBlackList_coeff = 1
 
     if avgSourceScore < 0.3:
         avgSourceScore_coeff = 0.7
@@ -275,12 +279,12 @@ def text_source_sentiment_score(text, title, text_source, title_source) -> float
     :param title_source: Заголовок новости источника
     :return: sentiment distance - чем ближе к 0 - тем ближе тексты, чем ближе к 1 - тем дальше
     """
-    _, text_scores = get_sentiment_scores(text, title)
-    _, source_scores = get_sentiment_scores(text_source, title_source)
+    text_vector = get_sentiment_scores(text, title)
+    source_vector = get_sentiment_scores(text_source, title_source)
 
-    column_names = ["negative", "positive", "neutral", "skip", "speech", 'clickbait_score', 'rationality', 'intuition']
-    text_vector = [text_scores[column] for column in column_names]
-    source_vector = [source_scores[column] for column in column_names]
+    # column_names = ["negative", "positive", "neutral", "skip", "speech", 'clickbait_score', 'rationality', 'intuition']
+    # text_vector = [text_scores[column] for column in column_names]
+    # source_vector = [source_scores[column] for column in column_names]
 
     distance = cosine(text_vector, source_vector)
 
@@ -456,7 +460,10 @@ def compare_ner_facts(source_ner_facts, text_ner_facts):
             values = [fact["Normal spans"] for fact in source_ner_fact]
             counter = Counter(values)
             most_important_value = counter.most_common(1)[0][0]
-            values_text = [fact["Normal spans"] for fact in text_ner_facts[key]]
+            if key in text_ner_facts:
+                values_text = [fact["Normal spans"] for fact in text_ner_facts[key]]
+            else:
+                values_text = []
             if most_important_value not in values_text:
                 message = "\nВажная сущность исходного текста пропущена: \n"
                 source_message = f"Сущность в источнике: {most_important_value}, тип: {ner_types[key]}\n"

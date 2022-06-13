@@ -72,48 +72,6 @@ async def add_document(new_doc: NewPyDocument,
     return document
 
 
-@router.post("/hello_world", name='Отправить документ на анализ', response_model=PyDocument)
-async def add_documentt(new_doc: NewPyDocument,
-                       background_tasks: BackgroundTasks,
-                       db: Session = Depends(get_db)) -> Document:
-    """
-    Создаёт новый документ в БД и отправляет его на анализ
-
-    - **new_doc**: Новый документ для анализа
-    """
-    logger = CustomLoggerAdapter(ROOT_LOGGER, extra={'req_uuid': uuid4(), 'method': 'POST api/docs'})
-
-    if new_doc.url is None:
-        url, title, text = None, new_doc.title, new_doc.text
-    else:
-        # document = db.query(Document
-        #                     ).filter(Document.url == new_doc.url
-        #                              ).first()
-        # if document is not None:
-        #     logger.info('Document already exists')
-        #     return document
-        sth = get_article_text_and_title(new_doc.url)
-        url, title, text = new_doc.url, sth.title, sth.text
-
-    logger.info('Inserting an entry into "analysis_results"')
-    analysis_result = AnalysisResult()
-    add_entries(analysis_result, db=db)
-
-    logger.info('Inserting an entry into "docs"')
-    document = Document(url=url,
-                        title=title,
-                        text=text,
-                        ar_id=analysis_result.id,
-                        entity_uuid=str(uuid4()))
-    add_entries(document, db=db)
-
-    background_tasks.add_task(analyze_document_useless,
-                              document=document,
-                              logger=logger)
-
-    return document
-
-
 @router.get("/{doc_id}/analyze-sources",
             name='Провести анализ источников документа',
             response_model=PySourcesAnalysisResult)
