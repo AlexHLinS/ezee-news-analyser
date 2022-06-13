@@ -263,12 +263,12 @@ def check_percent_of_copy_from_source(text, title, id, text_source, title_source
 
 results = []
 
-for ind, row in data_test.iterrows():
-    print(ind)
-    text_init = row["initial_text"]
-    # text_source = row["source_text"]
-    result = text_source_facts_comparison(text_init, None, None, text_source, None, None)
-    # result = check_percent_of_copy_from_source(text_init, None, None, text_source, None, None)
-    results.append(result)
-
-text_source_facts_comparison(text, None, None, text_source, None, None)
+# for ind, row in data_test.iterrows():
+#     print(ind)
+#     text_init = row["initial_text"]
+#     # text_source = row["source_text"]
+#     result = text_source_facts_comparison(text_init, None, None, text_source, None, None)
+#     # result = check_percent_of_copy_from_source(text_init, None, None, text_source, None, None)
+#     results.append(result)
+#
+# text_source_facts_comparison(text, None, None, text_source, None, None)
