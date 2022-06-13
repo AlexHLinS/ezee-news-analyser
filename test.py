@@ -119,7 +119,7 @@ def get_urls_dates(urls):
 def get_earlest_url(urls):
     """
     :param urls: [{'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}, ... ]
-    :return: по саммому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
+    :return: по самому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
     """
     df = pd.DataFrame(urls)
     return  df.sort_values(by='date').to_dict('records')[0]
@@ -135,4 +135,16 @@ def get_water_from(uid:str) -> int:
     return water
 
 
-print(get_water_from(test_uid))
+def get_earlest_url_from_uid(uid:str, similarity_criteria):
+    """
+    :param uid: uid: UID результатов анализа на text.ru
+    :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
+    :return: по самому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
+    """
+    relative_urls = get_relative_urls(uid, similarity_criteria)
+    relative_urls_with_dates = get_urls_dates(relative_urls)
+    earlest = get_earlest_url(relative_urls_with_dates)
+    return earlest
+
+
+print(get_earlest_url_from_uid(test_uid,7))
