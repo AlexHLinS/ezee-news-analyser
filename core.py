@@ -157,9 +157,28 @@ def start_analyze(article_id: int) -> None:
     proto_text = ''
     proto_title = ''
     article_text = document.text
-    article_titel = document.title
-    santiment_score = text_source_sentiment_score(article_text, article_titel, proto_text,
+    article_title = document.title
+
+    # float расстояние векторов эмоций между анализируемым текстом и текстом-первоисточником
+    sentiment_score = text_source_sentiment_score(article_text, article_title, proto_text,
                                                   proto_title)  # TODO: Подать истенные данные первоисточника
+
+    antiplagiat_score = None  # TODO добавить скор схожести текстов из антиплагиата
+
+    # float скоры эмоций для анализируемого текста
+    negative_score, positive_score, neutral_score, skip_score, speech_score, clickbait_score, rationality_score, intuition_score = get_sentiment_scores(
+        article_text, article_title)
+
+    # TODO Добавить функцию выделения семантического кора и подсчета скора соответствия
+    semantic_core = ""
+    distance_score = None
+
+    # float скор ошибок фактов-чисел, float скор ошибок фактов-сущностей, str сообщение с выявлением ошибок фактов
+    error_numerical_facts_score, error_ner_facts_score, facts_message = text_source_facts_comparison(article_text, proto_text)
+
+    message_to_frontend = f"Семантическое ядро новости:\n\n" \
+                          f"{semantic_core}\n\n\n" \
+                          f"{facts_message}"
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
 
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
@@ -186,7 +205,7 @@ def text_source_sentiment_score(text, title, text_source, title_source) -> float
     return distance
 
 
-def get_sentiment_scores(text, title) -> Tuple[str, Mapping[str, float]]:
+def get_sentiment_scores(text, title) -> Mapping[str, float]:
     """
     :param text: Текст статьи(новости)
     :param title: Заголовок новости
@@ -205,7 +224,10 @@ def get_sentiment_scores(text, title) -> Tuple[str, Mapping[str, float]]:
     sentiment_scores_dict['clickbait_score'] = clickbait_score
     for key in rationality_intuition_scores_dict.keys():
         sentiment_scores_dict[key] = rationality_intuition_scores_dict[key]
-    return text, sentiment_scores_dict
+
+    column_names = ["negative", "positive", "neutral", "skip", "speech", 'clickbait_score', 'rationality', 'intuition']
+    text_vector = [sentiment_scores_dict[column] for column in column_names]
+    return text_vector
 
 
 def get_fake_score_from_url(url, id) -> Tuple[str, Mapping[str, float]]:
@@ -236,7 +258,7 @@ def check_is_primary_source(url_list) -> Tuple[str, bool]:
     return ["", False]
 
 
-def check_percent_of_copy_from_source(text, title, id, text_source, title_source, id_source) -> float:
+def check_percent_of_copy_from_source(text, text_source) -> float:
     """
     :param id: индитификатор новости из базы
     :param text: Текст статьи(новости)
@@ -257,7 +279,7 @@ def check_percent_of_copy_from_source(text, title, id, text_source, title_source
     return num_coincidences / len(sentences)
 
 
-def text_source_facts_comparison(text, title, id, text_source, title_source, id_source) -> Tuple[List[str], List[str]]:
+def text_source_facts_comparison(text, text_source) -> Tuple[float, float, str]:
     """
     :param id: индитификатор новости из базы
     :param text: Текст статьи(новости)
@@ -274,7 +296,19 @@ def text_source_facts_comparison(text, title, id, text_source, title_source, id_
         text_numerical_facts)
 
     ner_error_messages = compare_ner_facts(source_ner_facts, text_ner_facts)
-    return numerical_error_messages, ner_error_messages
+
+    if len(text_numerical_facts) != 0:
+        error_numerical_facts_score = len(numerical_error_messages) / len(text_numerical_facts)
+    else:
+        error_numerical_facts_score = 1
+
+    if len(text_ner_facts) != 0:
+        error_ner_facts_score = len(ner_error_messages) / len(text_ner_facts)
+    else:
+        error_ner_facts_score = 1
+
+    facts_message = "\n".join(numerical_error_messages + ner_error_messages)
+    return error_numerical_facts_score, error_ner_facts_score, facts_message
 
 
 def compare_numerical_facts(source_numerical_facts, text_numerical_facts):
