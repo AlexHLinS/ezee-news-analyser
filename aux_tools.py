@@ -253,7 +253,7 @@ def get_earlest_url(urls):
     df = pd.DataFrame(urls)
     return  df.sort_values(by='date').to_dict('records')[0]
 
-def get_water_from(uid:str) -> int:
+def get_water_from(uid:str) -> int: # TODO: подключить к water_index
     """
     :param uid: UID результатов анализа на text.ru
     :return: процент "воды" в тексте
