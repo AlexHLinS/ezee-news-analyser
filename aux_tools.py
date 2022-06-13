@@ -286,7 +286,7 @@ def get_published_count(uid: str, similarity_criteria: int):  # TODO: подкл
     return result
 
 
-def get_grammatic_error_count(uid: str) -> int:  # TODO: подключить к grammatic_errors_count
+def get_grammatical_error_count(uid: str) -> int:  # TODO: подключить к grammatic_errors_count
     """
     :param uid: UID результатов анализа на text.ru
     :return: количество ошибок в тексте
