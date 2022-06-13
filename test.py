@@ -155,6 +155,17 @@ def get_published_count(uid: str, similarity_criteria: int):
     result = len(get_relative_urls(uid, similarity_criteria))
     return result
 
+def get_plagiary_percentage(uid: str, unique: bool):
+    """
+    :param uid: uid: UID результатов анализа на text.ru
+    :param unique: флаг выбора True - процент уникальности / False - процент совпадения
+    :return: процент уникальности или процент совпадения в зависимости от выбора
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    pp = json.loads(ap_all['result_json'])['unique']
+    if unique:
+        return pp
+    return 100-pp
 
 
-print(get_published_count(test_uid,7))
+print(get_plagiary_percentage(test_uid, False))
