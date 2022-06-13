@@ -103,7 +103,7 @@ def translate_text(text, from_lang, to_lang) -> str:
 
 # ------------------ antiplag
 
-def get_token_from_file(token_file_name) -> str | None:
+def get_token_from_file(token_file_name):
     """
     :param token_file_name: файл, содержащий токен
     :return: строку с токеном

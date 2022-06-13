@@ -3,8 +3,6 @@ import ssl
 import whois
 import OpenSSL
 
-from typing import List
-from urllib.parse import urlparse
 from datetime import datetime
 
 from tld import get_tld
