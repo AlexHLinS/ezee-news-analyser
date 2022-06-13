@@ -114,5 +114,6 @@ def get_urls_dates(urls):
         result.append(url)
     return result
 
+#def get_earlest_url()
 
 print(get_urls_dates(get_relative_urls(test_uid, 0)))

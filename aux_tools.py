@@ -3,9 +3,11 @@ from typing import Tuple, NamedTuple
 import requests
 from razdel import sentenize
 from translate import Translator
-from time import sleep
+import datetime
 from newspaper import Article, ArticleException
 import razdel
+import re
+from bs4 import BeautifulSoup
 
 from htmldate import find_date
 
@@ -192,6 +194,55 @@ def get_relative_urls_and_error_indexes(uid:str, similarity_criteria:int, text:s
     result.append(errors)
     return result
 
+def get_url_indexation_date(url: str):
+    months = {
+        'янв': '01',
+        'фев': '02',
+        'мар': '03',
+        'апр': '04',
+        'май': '05',
+        'июн': '06',
+        'июл': '07',
+        'авг': '08',
+        'сен': '09',
+        'окт': '10',
+        'ноя': '11',
+        'дек': '12'
+    }
+    template = r'\d{1,2}\s\D*\s\d{4}\s\d{2}\:\d{2}\:\d{2}\s[GMT]{3}'
+    webarch_url = 'http://webcache.googleusercontent.com/search?q=cache:' + url + '&strip=1&vwsrc=0'
+    raw_text = requests.get(webarch_url).text
+    soup = bs(raw_text, 'lxml')
+    date_str = soup.find_all('span')[1].text
+    result = re.findall(template, date_str)[0].split()[0:3]
+    result.reverse()
+    if len(result[-1]) <2: result[-1] = '0'+result[-1]
+    result = '-'.join(result)
+    for key in months.keys():
+        result = result.replace(key, str(months[key]))
+    return result
+
+def get_urls_date(url: str):
+    result = ''
+    try:
+        result = find_date(url)
+    except ValueError:
+        try:
+            result = get_url_indexation_date(url)
+        except IndexError:
+            result = str(datetime.date.today())
+    return result
+
+def get_urls_dates(urls):
+    """
+    :param urls: список из выгрузки text.ru urls [{'url': 'https://...', 'plagiat': '...', 'words': ...}, ... ]
+    :return: [{'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}, ... ]
+    """
+    result = list()
+    for url in urls:
+        url['data'] = get_urls_date(url['url'])
+        result.append(url)
+    return result
 
 # ------------------ black lists
 
