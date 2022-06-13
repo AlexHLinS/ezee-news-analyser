@@ -124,5 +124,15 @@ def get_earlest_url(urls):
     df = pd.DataFrame(urls)
     return  df.sort_values(by='date').to_dict('records')[0]
 
-urls = get_urls_dates(get_relative_urls(test_uid, 90))
-print(get_earlest_url(urls))
+
+def get_water_from(uid:str) -> int:
+    """
+    :param uid: UID результатов анализа на text.ru
+    :return: процент "воды" в тексте
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    water = json.loads(ap_all['seo_check'])['water_percent']
+    return water
+
+
+print(get_water_from(test_uid))
