@@ -9,7 +9,6 @@ import razdel
 import re
 from bs4 import BeautifulSoup as bs
 import pandas as pd
-
 from htmldate import find_date
 
 
@@ -295,7 +294,8 @@ def get_grammatical_error_count(uid: str) -> int:  # TODO: подключить 
     count = len(json.loads(ap_all['spell_check']))
     return count
 
-def get_spam_percent(uid:str) -> int:
+
+def get_spam_percent(uid: str) -> int:  # TODO: подключить к spam_index
     """
     :param uid: UID результатов анализа на text.ru
     :return: метрика spam_percent %
@@ -303,6 +303,7 @@ def get_spam_percent(uid:str) -> int:
     ap_all = get_antiplag_data_from_uid(uid)
     count = json.loads(ap_all['seo_check'])['spam_percent']
     return count
+
 
 def get_plagiary_percentage(uid: str, unique: bool):  # TODO: подключить к plagiary_percentage
     """
