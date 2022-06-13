@@ -12,8 +12,8 @@ from datetime import datetime
 from app.db.crud import *
 from app.db.models import *
 from app.helpers import default_logger
-from core import get_article_text_and_title
-from aux_tools import get_relative_urls, get_antiplag_uid
+from core import get_article_text_and_title, start_analyze
+from aux_tools import get_relative_urls, get_antiplag_uid, get_plagiary_percentage, get_grammatical_error_count
 
 
 def get_urls_with_dates(urls: List[str]):
@@ -145,8 +145,23 @@ def analyze_document(document: Document, logger=default_logger):
     # Если нет URL, то определяем его по наибольшему совпадению на АП
     if document.url is None:
         document.url = max(relative_urls, key=lambda x: x['plagiat']).get('url')
-
     update_entry_by_id(document.id, document)
+
+    # определяем grammatic_errors_count
+    try:
+        count = get_grammatical_error_count(ap_uuid)
+    except Exception as e:
+        logger.warning('Exception raised during "grammatical_error_count"', exc=repr(e))
+        count = None
+    update_entry_by_id(document.ar_id, AnalysisResult(grammatical_error_count=count))
+
+    # определяем plagiat_percentage
+    try:
+        plagiary_percentage = get_plagiary_percentage(ap_uuid, True)
+    except Exception as e:
+        plagiary_percentage = None
+        logger.warning('plagiat_percentage could not be processed', exc=repr(e))
+    update_entry_by_id(document.ar_id, AnalysisResult(plagiary_percentage=plagiary_percentage))
 
     urls = [ru.get('url') for ru in relative_urls]
 
@@ -167,7 +182,7 @@ def analyze_document(document: Document, logger=default_logger):
     update_entry_by_id(document.ar_id, AnalysisResult(times_published=len(urls)))
 
     new_sources, new_documents = [], []
-
+    primary_source_text, primary_source_title = None, None
     for url in urls:
         try:
             netloc = urlparse(url).netloc
@@ -187,6 +202,8 @@ def analyze_document(document: Document, logger=default_logger):
         # определяем text для primary_source
         if sth is not None and url == primary_source_url:
             update_entry_by_id(document.ar_id, AnalysisResult(text=sth.text))
+            primary_source_text = sth.text
+            primary_source_title = sth.title
 
         new_documents.append(Document(url=url,
                                       text=sth.text if sth is not None else None,
@@ -196,6 +213,18 @@ def analyze_document(document: Document, logger=default_logger):
 
     new_documents = add_entries(*new_documents)
     new_sources = add_entries(*new_sources)
+
+    # определяем sentiment_index, facts
+    analysis_result = get_entry_by_id(document.ar_id, AnalysisResult)
+    some_metrics = {}
+    if primary_source_text and primary_source_title and document.text:
+        try:
+            some_metrics = start_analyze(document.id, primary_source_text, primary_source_title)
+        except Exception as e:
+            logger.warning("Exception raised during 'start_analyze'", exc=repr(e))
+
+    update_entry_by_id(document.ar_id, AnalysisResult(sentiment_index=some_metrics.get('sentiment_index'),
+                                                      facts=some_metrics.get('facts')))
 
     # Считаем percentage_blacklist
     if len(new_sources) > 0:

@@ -138,7 +138,7 @@ from app.db.crud import get_entry_by_id, update_entry_by_id, Document
 
 
 ######
-def start_analyze(article_id: int) -> None:
+def start_analyze(article_id: int, proto_text: str, proto_title: str) -> dict:
     """
     :param article_id: индитификатор анализируемой новости в базе данных
     :return: None
@@ -154,8 +154,6 @@ def start_analyze(article_id: int) -> None:
     uid = get_antiplag_uid(text)
     ap_data = get_antiplag_data_from_uid(uid)
     # TODO: запустить дс модули и начать их результаты кидать в базу
-    proto_text = ''
-    proto_title = ''
     article_text = document.text
     article_title = document.title
 
@@ -187,7 +185,8 @@ def start_analyze(article_id: int) -> None:
     # TODO Финальный скор на фронт
     final_score = 0#calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
                                #error_ner_facts_score, grammaticErrorsCount, waterIndex, speechIndex, intuitionIndex)
-    pass
+    return {"sentiment_index": sentiment_score,
+            "facts": facts_message}
 
 
 def calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
