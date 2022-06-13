@@ -1,5 +1,7 @@
 import datetime
 
+import pandas as pd
+
 from aux_tools import *
 import razdel
 import json
@@ -7,7 +9,7 @@ from htmldate import find_date
 from bs4 import BeautifulSoup as bs
 import re
 
-test_uid = '62a3c28ba845a'
+test_uid = '62a678a14b054'
 
 text = '''Ежегодно в мае-июне Проектный офис Факультета экономических и социальных наук завершает работу над бизнес-проектами и представляет результаты заказчикам – российским и международным компаниям.
 Среди компаний-заказчиков были крупные российские компании и организации: Сбер, РЖД, ВЭБ, Минстрой РФ, Ростуризм, Правительство Москвы, киностудия им. Горького, холдинг САВООВ ФУДС, Альфа-Банк, ВТБ, Дом РФ, Очаково, Сегежа-Групп а также представительства зарубежных компаний: BMW, DeLonghi, L’Oreal, Pfizer, Ritter Sport, Xiaomi, Avon, Schneider Group и др.
@@ -92,7 +94,7 @@ def get_url_indexation_date(url: str):
 
 
 def get_urls_date(url: str):
-    result = ''
+    result = str(datetime.date.today())
     try:
         result = find_date(url)
     except ValueError:
@@ -110,10 +112,17 @@ def get_urls_dates(urls):
     """
     result = list()
     for url in urls:
-        url['data'] = get_urls_date(url['url'])
+        url['date'] = get_urls_date(url['url'])
         result.append(url)
     return result
 
-#def get_earlest_url()
+def get_earlest_url(urls):
+    """
+    :param urls: [{'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}, ... ]
+    :return: по саммому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
+    """
+    df = pd.DataFrame(urls)
+    return  df.sort_values(by='date').to_dict('records')[0]
 
-print(get_urls_dates(get_relative_urls(test_uid, 0)))
+urls = get_urls_dates(get_relative_urls(test_uid, 90))
+print(get_earlest_url(urls))
