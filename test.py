@@ -119,7 +119,7 @@ def get_urls_dates(urls):
 def get_earlest_url(urls):
     """
     :param urls: [{'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}, ... ]
-    :return: по саммому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
+    :return: по самому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
     """
     df = pd.DataFrame(urls)
     return  df.sort_values(by='date').to_dict('records')[0]
@@ -135,4 +135,37 @@ def get_water_from(uid:str) -> int:
     return water
 
 
-print(get_water_from(test_uid))
+def get_earlest_url_from_uid(uid:str, similarity_criteria):
+    """
+    :param uid: uid: UID результатов анализа на text.ru
+    :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
+    :return: по самому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
+    """
+    relative_urls = get_relative_urls(uid, similarity_criteria)
+    relative_urls_with_dates = get_urls_dates(relative_urls)
+    earlest = get_earlest_url(relative_urls_with_dates)
+    return earlest
+
+def get_published_count(uid: str, similarity_criteria: int):
+    """
+    :param uid: uid: UID результатов анализа на text.ru
+    :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
+    :return: кол-во публикаций с совпадением не ниже similarity_criteria
+    """
+    result = len(get_relative_urls(uid, similarity_criteria))
+    return result
+
+def get_plagiary_percentage(uid: str, unique: bool):
+    """
+    :param uid: uid: UID результатов анализа на text.ru
+    :param unique: флаг выбора True - процент уникальности / False - процент совпадения
+    :return: процент уникальности или процент совпадения в зависимости от выбора
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    pp = json.loads(ap_all['result_json'])['unique']
+    if unique:
+        return pp
+    return 100-pp
+
+
+print(get_plagiary_percentage(test_uid, False))
