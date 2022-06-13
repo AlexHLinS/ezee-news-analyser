@@ -80,6 +80,11 @@ class DiagramData(BaseModel):
     is_valid: Union[bool, None]
 
 
+class DiagramData(BaseModel):
+    date: Union[str, None]
+    is_valid: Union[bool, None]
+
+
 class PyAnalysisResult(BaseModel):
     id: int
     # Block 1

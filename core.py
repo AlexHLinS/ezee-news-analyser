@@ -152,6 +152,7 @@ def start_analyze(article_id: int) -> None:
     # TODO: проверить есть ли при наличии урл, текст и  заголовок, если текста или заголовка нет - попробовать прогрузить
     # TODO: закинуть запрос по тексту на текстру и получить уид
     uid = get_antiplag_uid(text)
+    ap_data = get_antiplag_data_from_uid(uid)
     # TODO: запустить дс модули и начать их результаты кидать в базу
     proto_text = ''
     proto_title = ''
@@ -179,7 +180,7 @@ def start_analyze(article_id: int) -> None:
                           f"{semantic_core}\n\n\n" \
                           f"{facts_message}"
     # TODO: после того как весь дс выполнится - загрузить данные по уид с текстру
-    ap_data = get_antiplag_data_from_uid(uid)
+
     # TODO: остальные действия которым необходимы урлы и прочее с текстру
     pass
 
