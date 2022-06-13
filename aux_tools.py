@@ -265,6 +265,16 @@ def get_earlest_url_from_uid(uid:str, similarity_criteria):
     earlest = get_earlest_url(relative_urls_with_dates)
     return earlest
 
+def get_published_count(uid: str, similarity_criteria: int):
+    """
+    :param uid: uid: UID результатов анализа на text.ru
+    :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
+    :return: кол-во публикаций с совпадением не ниже similarity_criteria
+    """
+    result = len(get_relative_urls(uid, similarity_criteria))
+    return result
+
+
 def get_water_from(uid:str) -> int: # TODO: подключить к water_index
     """
     :param uid: UID результатов анализа на text.ru
