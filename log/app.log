@@ -384,3 +384,55 @@
 [1;32mINFO[1;0m: 2022-06-13 01:24:10,922 - "message": Inserting an entry into "docs", "req_uuid": 4e9f1655-7f6e-4544-b2ca-ffb2c395706b, "method": POST api/docs
 [1;32mINFO[1;0m: 2022-06-13 01:24:10,929 - "message": Starting the analysis, "req_uuid": 4e9f1655-7f6e-4544-b2ca-ffb2c395706b, "method": POST api/docs, "doc_id": 64, "ar_id": 7
 [1;32mINFO[1;0m: 2022-06-13 01:24:24,989 - "message": Analysis has been finished, "req_uuid": 4e9f1655-7f6e-4544-b2ca-ffb2c395706b, "method": POST api/docs, "doc_id": 64, "ar_id": 7
+[1;32mINFO[1;0m: 2022-06-13 05:47:57,422 - "message": Inserting an entry into "analysis_results", "req_uuid": 988624e5-cd9f-49ce-807b-b7d7aa69f71b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:47:57,426 - "message": Inserting an entry into "docs", "req_uuid": 988624e5-cd9f-49ce-807b-b7d7aa69f71b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:49:08,929 - "message": Document already exists, "req_uuid": 196baa47-8744-4c77-a90e-30fb2b75f997, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:49:11,551 - "message": Document already exists, "req_uuid": 8daac558-c4e4-4b9b-b4ec-c6882daca982, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:51:18,432 - "message": Inserting an entry into "analysis_results", "req_uuid": bfdff0f8-728c-47aa-8889-0677da46eb9d, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:51:18,437 - "message": Inserting an entry into "docs", "req_uuid": bfdff0f8-728c-47aa-8889-0677da46eb9d, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:11,091 - "message": Inserting an entry into "analysis_results", "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:11,095 - "message": Inserting an entry into "docs", "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:11,889 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:15,087 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:18,301 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:21,504 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:24,676 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:27,863 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:53:31,063 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": d2eeb255-b3c0-4cb0-9bbb-0eceae4a75e6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:18,292 - "message": Inserting an entry into "analysis_results", "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:18,298 - "message": Inserting an entry into "docs", "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:19,099 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:22,413 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:25,619 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:28,788 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 05:56:32,034 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 03a1831d-61ed-409b-9bc9-1e63ba69eb33, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:25:43,473 - "message": Inserting an entry into "analysis_results", "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:25:43,490 - "message": Inserting an entry into "docs", "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:25:43,496 - "message": Starting the analysis, "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:25:44,223 - "message": Successfully requested AP for text processing, "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs, "ap_uuid": 62a6ae3807140
+[1;32mINFO[1;0m: 2022-06-13 06:25:44,515 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:25:48,016 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:25:51,340 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 87ac2d1f-d078-450b-9069-552843fc0f14, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:34,221 - "message": Inserting an entry into "analysis_results", "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:34,238 - "message": Inserting an entry into "docs", "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:34,243 - "message": Starting the analysis, "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:35,004 - "message": Successfully requested AP for text processing, "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs, "ap_uuid": 62a6ae6abf700
+[1;32mINFO[1;0m: 2022-06-13 06:26:35,313 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:38,602 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:41,865 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:26:45,151 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": 564308f2-f340-4547-846c-0915719f4ff3, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:48,736 - "message": Inserting an entry into "analysis_results", "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:48,760 - "message": Inserting an entry into "docs", "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:48,765 - "message": Starting the analysis, "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:49,392 - "message": Successfully requested AP for text processing, "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs, "ap_uuid": 62a6aeb53c13a
+[1;32mINFO[1;0m: 2022-06-13 06:27:49,634 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:52,932 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:56,218 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:27:59,506 - "message": AP in progress. Delaying for 5 seconds.., "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:28:56,155 - "message": Analysis has been finished, "req_uuid": c9328576-c7e2-46d2-a966-75de182bb682, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:31:21,621 - "message": Inserting an entry into "analysis_results", "req_uuid": 9c19d3ed-7525-4b29-9515-4ca5aaa0839b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:31:21,637 - "message": Inserting an entry into "docs", "req_uuid": 9c19d3ed-7525-4b29-9515-4ca5aaa0839b, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:32:02,248 - "message": Inserting an entry into "analysis_results", "req_uuid": 7872a253-3398-402e-9944-6c3657b6dba6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:32:02,263 - "message": Inserting an entry into "docs", "req_uuid": 7872a253-3398-402e-9944-6c3657b6dba6, "method": POST api/docs
+[1;32mINFO[1;0m: 2022-06-13 06:32:02,266 - "message": Starting the analysis, "req_uuid": 7872a253-3398-402e-9944-6c3657b6dba6, "method": POST api/docs, "doc_id": 117, "ar_id": 16
+[1;32mINFO[1;0m: 2022-06-13 06:32:16,359 - "message": Analysis has been finished, "req_uuid": 7872a253-3398-402e-9944-6c3657b6dba6, "method": POST api/docs, "doc_id": 117, "ar_id": 16

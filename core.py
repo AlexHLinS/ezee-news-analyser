@@ -227,7 +227,7 @@ def calculate_final_fake_score(timesPublished, percentageBlackList, avgSourceSco
         avgSourceScore_coeff = 1
 
     if error_numerical_facts_score == 0:
-        error_numerical_facts_score_coeff = 0
+        error_numerical_facts_score_coeff = 1
     elif error_numerical_facts_score == 1:
         error_numerical_facts_score_coeff = 0.6
     elif error_numerical_facts_score == 2:
@@ -236,7 +236,7 @@ def calculate_final_fake_score(timesPublished, percentageBlackList, avgSourceSco
         error_numerical_facts_score_coeff = 0.5
 
     if error_ner_facts_score == 0:
-        error_ner_facts_score_coeff = 0
+        error_ner_facts_score_coeff = 1
     elif error_ner_facts_score == 1:
         error_ner_facts_score_coeff = 0.8
     elif error_ner_facts_score == 2:
