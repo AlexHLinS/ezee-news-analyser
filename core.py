@@ -138,6 +138,7 @@ from app.db.crud import get_entry_by_id, update_entry_by_id, Document
 
 
 ######
+
 def start_analyze(article_id: int) -> None:
     """
     :param article_id: индитификатор анализируемой новости в базе данных
@@ -190,13 +191,25 @@ def start_analyze(article_id: int) -> None:
     pass
 
 
-def calculate_final_fake_score(timePublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
+def calculate_final_fake_score(timesPublished, percentageBlackList, avgSourceScore, error_numerical_facts_score,
                                error_ner_facts_score, grammaticErrorsCount, waterIndex, speechIndex, intuitionIndex):
-    if timePublished < 10:
+    """
+    :param timesPublished: кол-во публикаций
+    :param percentageBlackList: процент источников в "черном списке"
+    :param avgSourceScore: средний рейтинг источников
+    :param error_numerical_facts_score: искажение количественных фактов
+    :param error_ner_facts_score:искажение качественных фактов
+    :param grammaticErrorsCount: кол-во грамматических ошибок
+    :param waterIndex: индекс "воды" в тексте
+    :param speechIndex: "разговорная" речь
+    :param intuitionIndex: "научная" речь
+    :return: итоговая оценка
+    """
+    if timesPublished < 10:
         timePublished_coeff = 0.7
-    elif 10 <= timePublished < 20:
+    elif 10 <= timesPublished < 20:
         timePublished_coeff = 0.95
-    elif timePublished >= 20:
+    elif timesPublished >= 20:
         timePublished_coeff = 0
 
     if percentageBlackList < 20:

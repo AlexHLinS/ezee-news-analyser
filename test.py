@@ -2,15 +2,18 @@ import datetime
 
 import pandas as pd
 
+import core
 from aux_tools import *
 import razdel
 import json
 from htmldate import find_date
 from bs4 import BeautifulSoup as bs
 import re
+from app.db.crud import get_entry_by_id, Document
 
 test_uid = '62a678a14b054'
 
+title = '''Проектный офис ФЭСН РАНХиГС завершает 30 проектов. И начинает новые.'''
 text = '''Ежегодно в мае-июне Проектный офис Факультета экономических и социальных наук завершает работу над бизнес-проектами и представляет результаты заказчикам – российским и международным компаниям.
 Среди компаний-заказчиков были крупные российские компании и организации: Сбер, РЖД, ВЭБ, Минстрой РФ, Ростуризм, Правительство Москвы, киностудия им. Горького, холдинг САВООВ ФУДС, Альфа-Банк, ВТБ, Дом РФ, Очаково, Сегежа-Групп а также представительства зарубежных компаний: BMW, DeLonghi, L’Oreal, Pfizer, Ritter Sport, Xiaomi, Avon, Schneider Group и др.
 Проектный офис ФЭСН является крупнейшим университетским проектным центром не только по количеству и сложности проектов, и не только по количеству студентов-участников. Он уже создал и создает новые масштабные форматы проектной работы. Так, еще пять лет назад ФЭСН вовлек в проектную деятельность университеты пяти стран Европы и стал разрабатывать с ними полугодичные проекты для международных компаний на английском языке. Некоторые сложные проекты делались усилиями проектных групп нескольких стран; например, в проекте от генерального директора BMW Russia по «Разработке маркетинговой стратегии перехода компании BMW с бензиновых двигателей на электрические в России» бакалавры ФЭСН работали вместе с магистрами из Германии и Бельгии. А в одном из проектов участвовали команды из Германии, Бельгии, Италии, 4 проектные группы из Франции и 5 из Бразилии.'''
@@ -185,7 +188,12 @@ def get_spam_percent(uid:str) -> int:
     count = json.loads(ap_all['seo_check'])['spam_percent']
     return count
 
-
-
-
-print(get_spam_percent(test_uid))
+"""def get_speech_index(article_id: int | title, text):
+    if article_id:
+        document = get_entry_by_id(article_id, Document)
+        index = core.get_sentiment_scores(document.text, document.title)["speech"]
+    else:
+        index = core.get_sentiment_scores(text, title)["speech"]
+    return index
+"""
+print(get_spam_percent(title, text))
