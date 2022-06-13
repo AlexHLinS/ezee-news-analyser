@@ -7,7 +7,8 @@ import datetime
 from newspaper import Article, ArticleException
 import razdel
 import re
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
+import pandas as pd
 
 from htmldate import find_date
 
