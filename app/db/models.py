@@ -56,7 +56,7 @@ class AnalysisResult(Base):
     diagram_data = Column(String)
     # Block 3
     plagiary_percentage = Column(Float)
-    is_any_sentiment_delta = Column(Boolean)
+    is_any_sentiment_delta = Column(Float)
     facts = Column(String)
     # Block 4
     grammatic_errors_count = Column(Integer)

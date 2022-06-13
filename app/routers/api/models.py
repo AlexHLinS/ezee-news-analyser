@@ -80,11 +80,6 @@ class DiagramData(BaseModel):
     is_valid: Union[bool, None]
 
 
-class DiagramData(BaseModel):
-    date: Union[str, None]
-    is_valid: Union[bool, None]
-
-
 class PyAnalysisResult(BaseModel):
     id: int
     # Block 1
@@ -101,7 +96,7 @@ class PyAnalysisResult(BaseModel):
     diagram_data: Union[str, None]
     #
     plagiary_percentage: Union[str, None]
-    is_any_sentiment_delta: Union[bool, None]
+    is_any_sentiment_delta: Union[float, None]
     facts: Union[str, None]
     #
     grammatic_errors_count: Union[int, None]
