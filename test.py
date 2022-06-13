@@ -157,7 +157,7 @@ def get_published_count(uid: str, similarity_criteria: int):
 
 def get_plagiary_percentage(uid: str, unique: bool):
     """
-    :param uid: uid: UID результатов анализа на text.ru
+    :param uid: UID результатов анализа на text.ru
     :param unique: флаг выбора True - процент уникальности / False - процент совпадения
     :return: процент уникальности или процент совпадения в зависимости от выбора
     """
@@ -167,5 +167,25 @@ def get_plagiary_percentage(uid: str, unique: bool):
         return pp
     return 100-pp
 
+def get_grammatical_error_count(uid:str) -> int:
+    """
+    :param uid: UID результатов анализа на text.ru
+    :return: количество ошибок в тексте
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    count = len(json.loads(ap_all['spell_check']))
+    return count
 
-print(get_plagiary_percentage(test_uid, False))
+def get_spam_percent(uid:str) -> int:
+    """
+    :param uid: UID результатов анализа на text.ru
+    :return: метрика spam_percent %
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    count = json.loads(ap_all['seo_check'])['spam_percent']
+    return count
+
+
+
+
+print(get_spam_percent(test_uid))

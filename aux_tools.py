@@ -12,6 +12,7 @@ import pandas as pd
 
 from htmldate import find_date
 
+
 #### Structures
 
 class ArticleBaseData(NamedTuple):
@@ -79,6 +80,7 @@ class TextFeatures(NamedTuple):
     is_directional_pronouns_used: bool
     is_direct_appear: bool
     is_any_links: bool
+
 
 # ------------------ translator
 
@@ -149,8 +151,9 @@ def get_antiplag_data_from_uid(uid):
 
     return result
 
-#------
-def get_errors_words(uid:str, text:str):
+
+# ------
+def get_errors_words(uid: str, text: str):
     '''
     :param uid: идентификатор результатов анализа для API text.ru
     :param text: текст статьи
@@ -166,7 +169,8 @@ def get_errors_words(uid:str, text:str):
         result.append(words.index(error['error_text']))
     return result
 
-def get_relative_urls(uid:str, similarity_criteria:int):
+
+def get_relative_urls(uid: str, similarity_criteria: int):
     """
     :param uid: идентификатор результатов анализа для API text.ru
     :param similarity_criteria:  процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
@@ -180,7 +184,8 @@ def get_relative_urls(uid:str, similarity_criteria:int):
             result.append(url)
     return result
 
-def get_relative_urls_and_error_indexes(uid:str, similarity_criteria:int, text:str):
+
+def get_relative_urls_and_error_indexes(uid: str, similarity_criteria: int, text: str):
     """
     :param uid: идентификатор результатов анализа для API text.ru
     :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
@@ -188,12 +193,13 @@ def get_relative_urls_and_error_indexes(uid:str, similarity_criteria:int, text:s
     :return: [[{'url': 'https://адрес сайта', 'plagiat': '100', 'words': ['номера позиций "совпадающих" слов в тексте']}, ...], ['номера позиций слов с ошибками в тексте']]
 
     """
-    urls = get_relative_urls(uid,similarity_criteria)
+    urls = get_relative_urls(uid, similarity_criteria)
     errors = get_errors_words(uid, text)
     result = list()
     result.append(urls)
     result.append(errors)
     return result
+
 
 def get_url_indexation_date(url: str):
     months = {
@@ -217,11 +223,12 @@ def get_url_indexation_date(url: str):
     date_str = soup.find_all('span')[1].text
     result = re.findall(template, date_str)[0].split()[0:3]
     result.reverse()
-    if len(result[-1]) <2: result[-1] = '0'+result[-1]
+    if len(result[-1]) < 2: result[-1] = '0' + result[-1]
     result = '-'.join(result)
     for key in months.keys():
         result = result.replace(key, str(months[key]))
     return result
+
 
 def get_urls_date(url: str):
     result = ''
@@ -234,6 +241,7 @@ def get_urls_date(url: str):
             result = str(datetime.date.today())
     return result
 
+
 def get_urls_dates(urls):
     """
     :param urls: список из выгрузки text.ru urls [{'url': 'https://...', 'plagiat': '...', 'words': ...}, ... ]
@@ -245,16 +253,18 @@ def get_urls_dates(urls):
         result.append(url)
     return result
 
+
 def get_earlest_url(urls):
     """
     :param urls: [{'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}, ... ]
     :return: по саммому раннему {'url': 'https://...', 'plagiat': '...', 'words': ..., date:'YYYY-MM-DD'}
     """
     df = pd.DataFrame(urls)
-    return  df.sort_values(by='date').to_dict('records')[0]
+    return df.sort_values(by='date').to_dict('records')[0]
 
 
-def get_earlest_url_from_uid(uid:str, similarity_criteria):
+def get_earlest_url_from_uid(uid: str, similarity_criteria):  # TODO: подключить к primary_source_url
+    # TODO: подключить к created_at
     """
     :param uid: uid: UID результатов анализа на text.ru
     :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
@@ -265,7 +275,8 @@ def get_earlest_url_from_uid(uid:str, similarity_criteria):
     earlest = get_earlest_url(relative_urls_with_dates)
     return earlest
 
-def get_published_count(uid: str, similarity_criteria: int):
+
+def get_published_count(uid: str, similarity_criteria: int):  # TODO: подключить к times_published
     """
     :param uid: uid: UID результатов анализа на text.ru
     :param similarity_criteria: процент совпадения, ниже которого результаты не выдаются целое число от 0 до 100
@@ -274,7 +285,26 @@ def get_published_count(uid: str, similarity_criteria: int):
     result = len(get_relative_urls(uid, similarity_criteria))
     return result
 
-def get_plagiary_percentage(uid: str, unique: bool):
+
+def get_grammatical_error_count(uid: str) -> int:  # TODO: подключить к grammatic_errors_count
+    """
+    :param uid: UID результатов анализа на text.ru
+    :return: количество ошибок в тексте
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    count = len(json.loads(ap_all['spell_check']))
+    return count
+
+def get_spam_percent(uid:str) -> int:
+    """
+    :param uid: UID результатов анализа на text.ru
+    :return: метрика spam_percent %
+    """
+    ap_all = get_antiplag_data_from_uid(uid)
+    count = json.loads(ap_all['seo_check'])['spam_percent']
+    return count
+
+def get_plagiary_percentage(uid: str, unique: bool):  # TODO: подключить к plagiary_percentage
     """
     :param uid: uid: UID результатов анализа на text.ru
     :param unique: флаг выбора True - процент уникальности / False - процент совпадения
@@ -284,9 +314,10 @@ def get_plagiary_percentage(uid: str, unique: bool):
     pp = json.loads(ap_all['result_json'])['unique']
     if unique:
         return pp
-    return 100-pp
+    return 100 - pp
 
-def get_water_from(uid:str) -> int: # TODO: подключить к water_index
+
+def get_water_from(uid: str) -> int:  # TODO: подключить к water_index
     """
     :param uid: UID результатов анализа на text.ru
     :return: процент "воды" в тексте
@@ -294,6 +325,7 @@ def get_water_from(uid:str) -> int: # TODO: подключить к water_index
     ap_all = get_antiplag_data_from_uid(uid)
     water = json.loads(ap_all['seo_check'])['water_percent']
     return water
+
 
 # ------------------ black lists
 
@@ -315,6 +347,3 @@ def get_text_from_url(url) -> ArticleBaseData:
         return ArticleBaseData(url=url, title='', text='')
 
     return ArticleBaseData(url=url, title=article_title, text=article_text)
-
-
-
